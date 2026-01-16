@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Models
+{
+    public class Connection
+    {
+        public string ConnectionId { get; set; }
+        public Guid UserId { get; set; }
+        public DateTime ConnectedAt { get; set; }
+    }
+
+}

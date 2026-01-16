@@ -1,0 +1,14 @@
+D:\REAL TIME CHAT\ChatApp\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\REAL TIME CHAT\ChatApp\Domain\bin\Debug\net8.0\Domain.runtimeconfig.json
+D:\REAL TIME CHAT\ChatApp\Domain\bin\Debug\net8.0\Domain.dll
+D:\REAL TIME CHAT\ChatApp\Domain\bin\Debug\net8.0\Domain.pdb
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\Domain.dll
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\Domain.pdb
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
+D:\REAL TIME CHAT\ChatApp\Domain\obj\Debug\net8.0\ref\Domain.dll

@@ -1,0 +1,844 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\REAL TIME CHAT\\ChatApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\api\\users\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\api\\users\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\extensions\\jwtextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\extensions\\jwtextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\api\\users\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\api\\users\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\extensions\\databaseextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\extensions\\databaseextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\repositories\\chatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\repositories\\chatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\services\\interfaces\\ichatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\services\\interfaces\\ichatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\repositories\\interfaces\\ichatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\repositories\\interfaces\\ichatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\services\\interfaces\\igroupchatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\services\\interfaces\\igroupchatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\models\\connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\api\\users\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\api\\users\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\api\\users\\groupchatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\api\\users\\groupchatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\enums\\messagestatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\messagestatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\api\\users\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\api\\users\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\enums\\grouproleenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\grouproleenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\services\\groupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\services\\groupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\services\\interfaces\\igroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\services\\interfaces\\igroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\services\\groupchatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\services\\groupchatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\models\\groupmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\groupmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\repositories\\grouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\repositories\\grouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\repositories\\interfaces\\igrouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\repositories\\interfaces\\igrouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\repositories\\groupchatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\repositories\\groupchatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\data\\chatdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\data\\chatdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\repositories\\interfaces\\igroupchatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\repositories\\interfaces\\igroupchatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\models\\groupmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\groupmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\models\\chatgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\chatgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\chatapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\chatapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\migrations\\20260113103334_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\migrations\\20260113103334_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\models\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\enums\\notificationtypeenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\notificationtypeenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\chatapp\\domain\\enums\\userstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\userstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\migrations\\20260114141154_addmessagestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\migrations\\20260114141154_addmessagestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\migrations\\20260114134801_grouproleenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\migrations\\20260114134801_grouproleenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\chatapp\\chatapp\\migrations\\20260114134228_groupmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\migrations\\20260114134228_groupmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Hubs\\ChatHub.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "ChatApp\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwBoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T10:01:05.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Connection.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\Connection.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Connection.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\Connection.cs",
+              "RelativeToolTip": "Domain\\Models\\Connection.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAcwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:47:29.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\AuthController.cs",
+              "RelativeDocumentMoniker": "ChatApp\\API\\Users\\AuthController.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\AuthController.cs",
+              "RelativeToolTip": "ChatApp\\API\\Users\\AuthController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwDQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T14:15:21.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DatabaseExtension.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Extensions\\DatabaseExtension.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Extensions\\DatabaseExtension.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Extensions\\DatabaseExtension.cs",
+              "RelativeToolTip": "ChatApp\\Extensions\\DatabaseExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:54:51.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Repositories\\UserRepository.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "ChatApp\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAowDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:29:45.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\UserController.cs",
+              "RelativeDocumentMoniker": "ChatApp\\API\\Users\\UserController.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\UserController.cs",
+              "RelativeToolTip": "ChatApp\\API\\Users\\UserController.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:31:59.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IGroupChatService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\Interfaces\\IGroupChatService.cs",
+              "RelativeDocumentMoniker": "Domain\\Services\\Interfaces\\IGroupChatService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\Interfaces\\IGroupChatService.cs",
+              "RelativeToolTip": "Domain\\Services\\Interfaces\\IGroupChatService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T10:21:54.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ChatApp\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ChatApp\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-13T13:55:33.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Program.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Program.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Program.cs",
+              "RelativeToolTip": "ChatApp\\Program.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAYwDIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:42:31.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "JwtExtension.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Extensions\\JwtExtension.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Extensions\\JwtExtension.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Extensions\\JwtExtension.cs",
+              "RelativeToolTip": "ChatApp\\Extensions\\JwtExtension.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAkwCQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T14:28:37.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Message.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\Message.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Message.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\Message.cs",
+              "RelativeToolTip": "Domain\\Models\\Message.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:45:23.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\ChatController.cs",
+              "RelativeDocumentMoniker": "ChatApp\\API\\Users\\ChatController.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\ChatController.cs",
+              "RelativeToolTip": "ChatApp\\API\\Users\\ChatController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T14:15:59.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IChatRepository.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Repositories\\Interfaces\\IChatRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repositories\\Interfaces\\IChatRepository.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Repositories\\Interfaces\\IChatRepository.cs",
+              "RelativeToolTip": "Domain\\Repositories\\Interfaces\\IChatRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T15:04:58.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IChatService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\Interfaces\\IChatService.cs",
+              "RelativeDocumentMoniker": "Domain\\Services\\Interfaces\\IChatService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\Interfaces\\IChatService.cs",
+              "RelativeToolTip": "Domain\\Services\\Interfaces\\IChatService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T15:21:15.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ChatRepository.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Repositories\\ChatRepository.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Repositories\\ChatRepository.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Repositories\\ChatRepository.cs",
+              "RelativeToolTip": "ChatApp\\Repositories\\ChatRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T15:19:17.383Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ChatService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Services\\ChatService.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Services\\ChatService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Services\\ChatService.cs",
+              "RelativeToolTip": "ChatApp\\Services\\ChatService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAMwBkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T15:22:00Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "20260114141154_AddMessageStatus.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Migrations\\20260114141154_AddMessageStatus.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Migrations\\20260114141154_AddMessageStatus.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Migrations\\20260114141154_AddMessageStatus.cs",
+              "RelativeToolTip": "ChatApp\\Migrations\\20260114141154_AddMessageStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T14:11:54.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MessageStatusEnum.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Enums\\MessageStatusEnum.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\MessageStatusEnum.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Enums\\MessageStatusEnum.cs",
+              "RelativeToolTip": "Domain\\Enums\\MessageStatusEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:57:41.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "GroupChatController.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\GroupChatController.cs",
+              "RelativeDocumentMoniker": "ChatApp\\API\\Users\\GroupChatController.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\GroupChatController.cs",
+              "RelativeToolTip": "ChatApp\\API\\Users\\GroupChatController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA4wBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:33:03.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Services\\UserService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Services\\UserService.cs",
+              "RelativeToolTip": "ChatApp\\Services\\UserService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAUwBcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:30:48.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "GroupController.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\GroupController.cs",
+              "RelativeDocumentMoniker": "ChatApp\\API\\Users\\GroupController.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\API\\Users\\GroupController.cs",
+              "RelativeToolTip": "ChatApp\\API\\Users\\GroupController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:39:39.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GroupService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Services\\GroupService.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Services\\GroupService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Services\\GroupService.cs",
+              "RelativeToolTip": "ChatApp\\Services\\GroupService.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAwwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:38:51.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "GroupRoleEnum.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Enums\\GroupRoleEnum.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\GroupRoleEnum.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Enums\\GroupRoleEnum.cs",
+              "RelativeToolTip": "Domain\\Enums\\GroupRoleEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:57:10.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IGroupService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\Interfaces\\IGroupService.cs",
+              "RelativeDocumentMoniker": "Domain\\Services\\Interfaces\\IGroupService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\Interfaces\\IGroupService.cs",
+              "RelativeToolTip": "Domain\\Services\\Interfaces\\IGroupService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:38:16.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "20260114134801_GroupRoleEnum.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Migrations\\20260114134801_GroupRoleEnum.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Migrations\\20260114134801_GroupRoleEnum.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Migrations\\20260114134801_GroupRoleEnum.cs",
+              "RelativeToolTip": "ChatApp\\Migrations\\20260114134801_GroupRoleEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:48:01.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "GroupMember.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\GroupMember.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\GroupMember.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\GroupMember.cs",
+              "RelativeToolTip": "Domain\\Models\\GroupMember.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAADgvxAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:47:01.837Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "GroupChatService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Services\\GroupChatService.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Services\\GroupChatService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Services\\GroupChatService.cs",
+              "RelativeToolTip": "ChatApp\\Services\\GroupChatService.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAmwCoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T10:22:29.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "20260114134228_GroupMember.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Migrations\\20260114134228_GroupMember.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Migrations\\20260114134228_GroupMember.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Migrations\\20260114134228_GroupMember.cs",
+              "RelativeToolTip": "ChatApp\\Migrations\\20260114134228_GroupMember.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:42:29.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "GroupRepository.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Repositories\\GroupRepository.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Repositories\\GroupRepository.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Repositories\\GroupRepository.cs",
+              "RelativeToolTip": "ChatApp\\Repositories\\GroupRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:37:51.341Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IGroupRepository.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Repositories\\Interfaces\\IGroupRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repositories\\Interfaces\\IGroupRepository.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Repositories\\Interfaces\\IGroupRepository.cs",
+              "RelativeToolTip": "Domain\\Repositories\\Interfaces\\IGroupRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:37:13.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "Domain\\Services\\Interfaces\\IUserService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "Domain\\Services\\Interfaces\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:30:17.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "Domain\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:29:09.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "GroupChatRepository.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Repositories\\GroupChatRepository.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Repositories\\GroupChatRepository.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Repositories\\GroupChatRepository.cs",
+              "RelativeToolTip": "ChatApp\\Repositories\\GroupChatRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T10:19:12.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IGroupChatRepository.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Repositories\\Interfaces\\IGroupChatRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repositories\\Interfaces\\IGroupChatRepository.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Repositories\\Interfaces\\IGroupChatRepository.cs",
+              "RelativeToolTip": "Domain\\Repositories\\Interfaces\\IGroupChatRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T10:18:35.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "GroupMessage.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\GroupMessage.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\GroupMessage.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\GroupMessage.cs",
+              "RelativeToolTip": "Domain\\Models\\GroupMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T15:28:49.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ChatDbContext.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Data\\ChatDbContext.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Data\\ChatDbContext.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Data\\ChatDbContext.cs",
+              "RelativeToolTip": "ChatApp\\Data\\ChatDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:50:32.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ChatGroup.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\ChatGroup.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\ChatGroup.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\ChatGroup.cs",
+              "RelativeToolTip": "Domain\\Models\\ChatGroup.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAowA4AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:46:38.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "Domain\\Services\\JwtService.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Services\\JwtService.cs",
+              "RelativeToolTip": "Domain\\Services\\JwtService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAcwBAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T14:37:34.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\appsettings.json",
+              "RelativeDocumentMoniker": "ChatApp\\appsettings.json",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\appsettings.json",
+              "RelativeToolTip": "ChatApp\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-13T09:51:06.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ChatApp.csproj",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\ChatApp.csproj",
+              "RelativeDocumentMoniker": "ChatApp\\ChatApp.csproj",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\ChatApp.csproj",
+              "RelativeToolTip": "ChatApp\\ChatApp.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-13T09:34:03.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\DTOs\\LoginDto.cs",
+              "RelativeDocumentMoniker": "Domain\\DTOs\\LoginDto.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\DTOs\\LoginDto.cs",
+              "RelativeToolTip": "Domain\\DTOs\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T14:13:36.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RegisterDto.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\DTOs\\RegisterDto.cs",
+              "RelativeDocumentMoniker": "Domain\\DTOs\\RegisterDto.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\DTOs\\RegisterDto.cs",
+              "RelativeToolTip": "Domain\\DTOs\\RegisterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T14:20:12.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\User.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\User.cs",
+              "RelativeToolTip": "Domain\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:44:25.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Notification.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\Notification.cs",
+              "RelativeToolTip": "Domain\\Models\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:48:16.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "UserStatus.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\UserStatus.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\UserStatus.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Models\\UserStatus.cs",
+              "RelativeToolTip": "Domain\\Models\\UserStatus.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:47:47.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "Domain\\Class1.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Class1.cs",
+              "RelativeToolTip": "Domain\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:32:26.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Domain.csproj",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Domain.csproj",
+              "RelativeToolTip": "Domain\\Domain.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-13T09:34:55.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "20260113103334_InitialCreate.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Migrations\\20260113103334_InitialCreate.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Migrations\\20260113103334_InitialCreate.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Migrations\\20260113103334_InitialCreate.cs",
+              "RelativeToolTip": "ChatApp\\Migrations\\20260113103334_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T10:33:35.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "BaseAPIController.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Controllers\\BaseAPIController.cs",
+              "RelativeDocumentMoniker": "ChatApp\\Controllers\\BaseAPIController.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\Controllers\\BaseAPIController.cs",
+              "RelativeToolTip": "ChatApp\\Controllers\\BaseAPIController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T10:09:59.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "NotificationTypeEnum.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Enums\\NotificationTypeEnum.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\NotificationTypeEnum.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Enums\\NotificationTypeEnum.cs",
+              "RelativeToolTip": "Domain\\Enums\\NotificationTypeEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:58:08.245Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "UserStatusEnum.cs",
+              "DocumentMoniker": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Enums\\UserStatusEnum.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\UserStatusEnum.cs",
+              "ToolTip": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Enums\\UserStatusEnum.cs",
+              "RelativeToolTip": "Domain\\Enums\\UserStatusEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T09:56:48.271Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
