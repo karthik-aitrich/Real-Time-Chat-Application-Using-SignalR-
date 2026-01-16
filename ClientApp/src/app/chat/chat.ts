@@ -61,28 +61,26 @@ constructor(
 //   }
 
 ngOnInit() {
-  if (typeof window !== 'undefined') {
-    const id = localStorage.getItem("userId");
+  const id = localStorage.getItem("userId");
 
-    if (id) {
-      this.senderId = id;
-    } else {
-      console.error("No userId found in localStorage");
-    }
+  if (!id) {
+    console.error("No userId found");
+    return;
   }
+
+  this.senderId = id;
 
   this.chatService.startConnection();
 
-this.userService.getUsers().subscribe((res: User[]) => {
-  console.log("Users loaded:", res);
-  this.users = res;
- // this.cdr.detectChanges();
-});
-
-
+  this.userService.getUsers().subscribe((res: User[]) => {
+    console.log("Users loaded:", res);
+    this.users = res.filter(u => u.userId !== this.senderId);
+    this.cdr.detectChanges();
+  });
 
   this.chatService.onMessageReceived((msg: Message) => {
     this.messages.push(msg);
+    this.cdr.detectChanges();
   });
 }
 
