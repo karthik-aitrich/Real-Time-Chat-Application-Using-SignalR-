@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../models/user.model';
 import { Message } from '../models/message.model';
-import { NgZone } from '@angular/core';
-
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-chat',
@@ -38,7 +37,7 @@ messages: Message[] = [];
 constructor(
   private chatService: ChatService,
   private userService: UserService,
-  private zone: NgZone
+  private cdr: ChangeDetectorRef
 ) {}
 
 
@@ -62,31 +61,26 @@ constructor(
 //   }
 
 ngOnInit() {
-  if (typeof window !== 'undefined') {
-    const id = localStorage.getItem("userId");
+  const id = localStorage.getItem("userId");
 
-    if (id) {
-      this.senderId = id;
-    } else {
-      console.error("No userId found in localStorage");
-    }
+  if (!id) {
+    console.error("No userId found");
+    return;
   }
+
+  this.senderId = id;
 
   this.chatService.startConnection();
 
-this.userService.getUsers().subscribe(res => {
-  console.log("Users loaded:", res);
-
-  this.zone.run(() => {
-    this.users = res;
+  this.userService.getUsers().subscribe((res: User[]) => {
+    console.log("Users loaded:", res);
+    this.users = res.filter(u => u.userId !== this.senderId);
+    this.cdr.detectChanges();
   });
-});
-
-
-
 
   this.chatService.onMessageReceived((msg: Message) => {
     this.messages.push(msg);
+    this.cdr.detectChanges();
   });
 }
 
