@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../models/user.model';
 import { Message } from '../models/message.model';
-import { ChangeDetectorRef } from '@angular/core';
+import { NgZone } from '@angular/core';
+
 
 @Component({
   selector: 'app-chat',
@@ -37,7 +38,7 @@ messages: Message[] = [];
 constructor(
   private chatService: ChatService,
   private userService: UserService,
-  private cdr: ChangeDetectorRef
+  private zone: NgZone
 ) {}
 
 
@@ -73,11 +74,14 @@ ngOnInit() {
 
   this.chatService.startConnection();
 
-this.userService.getUsers().subscribe((res: User[]) => {
+this.userService.getUsers().subscribe(res => {
   console.log("Users loaded:", res);
-  this.users = res;
- // this.cdr.detectChanges();
+
+  this.zone.run(() => {
+    this.users = res;
+  });
 });
+
 
 
 
