@@ -14,7 +14,7 @@ namespace ChatApp.Services
             _chatRepository = chatRepository;
         }
 
-        public async Task SendMessageAsync(Guid senderId, Guid receiverId, string message)
+        public async Task<Message> SendMessageAsync( Guid senderId,Guid receiverId,string message)
         {
             var msg = new Message
             {
@@ -26,9 +26,11 @@ namespace ChatApp.Services
                 Status = MessageStatusEnum.Sent
             };
 
-
             await _chatRepository.SaveMessageAsync(msg);
+
+            return msg; // 🔥 THIS IS THE KEY
         }
+
 
         public async Task<List<Message>> GetChatHistoryAsync(Guid user1, Guid user2)
         {

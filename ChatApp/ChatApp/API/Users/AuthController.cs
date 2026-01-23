@@ -1,9 +1,12 @@
-﻿using System.Security.Cryptography;
+﻿using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using ChatApp.Data;
 using ChatApp.Services;
 using Domain.DTOs;
 using Domain.Models;
+using Domain.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,11 +16,13 @@ namespace ChatApp.Controllers
     {
         private readonly ChatDbContext _context;
         private readonly JwtService _jwtService;
+        private readonly IUserService _userService;
 
-        public AuthController(ChatDbContext context, JwtService jwtService)
+        public AuthController(ChatDbContext context, JwtService jwtService, IUserService userService)
         {
             _context = context;
             _jwtService = jwtService;
+            _userService = userService;
         }
 
         // POST: api/v1/auth/register
@@ -45,6 +50,18 @@ namespace ChatApp.Controllers
             return Ok(new { message = "Registration successful" });
 
         }
+
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+            await _userService.SetUserOfflineAsync(userId);
+
+            return Ok(new { message = "Logged out successfully" });
+        }
+
 
         // POST: api/v1/auth/login
         [HttpPost("login")]
@@ -74,6 +91,10 @@ namespace ChatApp.Controllers
                 user.Email
             });
         }
+
+       
+
+
 
 
         private string HashPassword(string password)

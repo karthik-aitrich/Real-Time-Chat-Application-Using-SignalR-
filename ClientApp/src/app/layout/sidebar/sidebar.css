@@ -1,0 +1,38 @@
+.sidebar {
+  padding: 10px;
+}
+
+.sidebar h3 {
+  margin: 10px 0;
+}
+
+.sidebar .user,
+.sidebar .group {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sidebar .user:hover,
+.sidebar .group:hover {
+  background: #f1f1f1;
+}
+
+.sidebar .active {
+  background: #e0e0e0;
+}
+
+.settings-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background: #0b8457;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+.sidebar {
+  height: 100vh;
+  overflow-y: auto;
+  background: #ffffff;
+}

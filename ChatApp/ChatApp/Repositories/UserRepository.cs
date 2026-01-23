@@ -44,5 +44,17 @@ namespace ChatApp.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task SetUserOfflineAsync(Guid userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user != null)
+            {
+                user.IsOnline = false;
+                user.LastSeen = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+            }
+        }
+
     }
 }

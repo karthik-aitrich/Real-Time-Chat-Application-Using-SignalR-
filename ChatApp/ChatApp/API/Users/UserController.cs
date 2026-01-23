@@ -21,5 +21,7 @@ namespace ChatApp.Controllers
             var users = await _userService.GetAllUsersAsync();
             return Ok(users);
         }
+
+
     }
 }

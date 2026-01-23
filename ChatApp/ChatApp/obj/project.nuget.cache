@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c+j8sipVXVs=",
+  "dgSpecHash": "LukmwZrw8D8=",
   "success": true,
-  "projectFilePath": "D:\\REAL TIME CHAT\\ChatApp\\ChatApp\\ChatApp.csproj",
+  "projectFilePath": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\ChatApp\\ChatApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\karth\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\karth\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

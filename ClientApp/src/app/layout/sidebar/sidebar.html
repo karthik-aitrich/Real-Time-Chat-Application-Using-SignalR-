@@ -1,0 +1,30 @@
+<div class="p-3">
+
+  <h6>Users</h6>
+  <ul class="list-group mb-3">
+    <li class="list-group-item"
+        *ngFor="let user of users"
+        (click)="openChat(user)">
+      {{ user.userName }}
+    </li>
+  </ul>
+
+  <h6>Groups</h6>
+<ul class="list-group mb-3">
+ <li class="list-group-item list-group-item-action"
+    *ngFor="let group of groups"
+    (click)="openGroup(group)">
+  {{ group.groupName }}
+</li>
+
+
+<button (click)="createNewGroup()">+ New Group</button>
+
+
+
+</ul>
+
+
+  <button class="btn btn-success w-100">Settings</button>
+
+</div>

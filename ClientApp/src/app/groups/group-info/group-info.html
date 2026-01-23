@@ -1,0 +1,20 @@
+<h2>Group Members</h2>
+
+<div *ngFor="let m of members">
+
+  <b>{{m.userName}}</b>
+  <span *ngIf="m.role === 1"> (Admin)</span>
+
+  <button *ngIf="m.userId !== myId" (click)="remove(m.userId)">
+    Remove
+  </button>
+
+  <button *ngIf="m.role === 0" (click)="changeRole(m.userId, 1)">
+    Make Admin
+  </button>
+
+</div>
+
+<hr>
+
+<button (click)="leave()">Leave Group</button>

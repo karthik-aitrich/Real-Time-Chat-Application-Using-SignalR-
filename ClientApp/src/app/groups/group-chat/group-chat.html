@@ -1,0 +1,49 @@
+<div class="d-flex flex-column vh-100">
+
+  <!-- HEADER -->
+  <div class="border-bottom bg-white px-3 py-2">
+    <h6 class="mb-0">{{ groupName }}</h6>
+  </div>
+
+  <!-- MESSAGES -->
+  <div #chatBody class="flex-grow-1 overflow-auto p-3 bg-light">
+
+    <div *ngFor="let msg of messages" class="mb-2">
+
+      <div class="mb-2 d-flex"
+     [ngClass]="msg.senderId === senderId ? 'justify-content-end' : 'justify-content-start'">
+
+  <div class="px-3 py-2 rounded"
+       [ngClass]="msg.senderId === senderId ? 'bg-success text-white' : 'bg-white border'">
+
+    <!-- 🔥 SENDER NAME (GROUP ONLY) -->
+    <small *ngIf="msg.senderId !== senderId"
+           class="fw-bold d-block text-primary mb-1">
+      {{ msg.senderName }}
+    </small>
+
+    <div>{{ msg.messageText }}</div>
+
+    <small class="text-muted d-block text-end">
+      {{ msg.sentAt | date:'shortTime' }}
+    </small>
+  </div>
+</div>
+
+
+    </div>
+
+  </div>
+
+  <!-- INPUT -->
+  <div class="border-top bg-white p-3">
+    <div class="input-group">
+      <input class="form-control"
+             placeholder="Type a message..."
+             [(ngModel)]="message" />
+
+      <button class="btn btn-success" (click)="send()">Send</button>
+    </div>
+  </div>
+
+</div>

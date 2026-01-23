@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './login.html',
   imports: [CommonModule, FormsModule, RouterModule]
 })
-export class LoginComponent {
+export class Login {
 
   email = '';
   password = '';
@@ -31,7 +31,8 @@ export class LoginComponent {
         localStorage.setItem("userId", response.userId);
 
         // Redirect to chat
-        this.router.navigate(['/chat']);
+        this.router.navigate(['/app']);
+
       });
   }
 }

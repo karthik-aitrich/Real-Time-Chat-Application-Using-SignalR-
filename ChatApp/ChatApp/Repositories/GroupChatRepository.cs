@@ -1,4 +1,5 @@
 ﻿using ChatApp.Data;
+using Domain.DTOs;
 using Domain.Models;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -14,17 +15,28 @@ namespace ChatApp.Repositories
             _context = context;
         }
 
-        public async Task SaveGroupMessageAsync(GroupMessage message)
+        public async Task<GroupMessage> AddMessageAsync(Guid groupId, Guid senderId, string message)
         {
-            _context.GroupMessages.Add(message);
+            var entity = new GroupMessage
+            {
+                GroupId = groupId,
+                SenderId = senderId,
+                MessageText = message,
+                SentAt = DateTime.UtcNow
+            };
+
+            _context.GroupMessages.Add(entity);
             await _context.SaveChangesAsync();
+
+            return entity;
         }
 
-        public async Task<List<GroupMessage>> GetGroupMessagesAsync(Guid groupId)
+
+        public async Task<IEnumerable<GroupMessage>> GetGroupMessagesAsync(Guid groupId)
         {
             return await _context.GroupMessages
                 .Where(m => m.GroupId == groupId)
-                .OrderBy(m => m.SentAt)
+                .OrderBy(m => m.SentAt)   // 🔥 CRITICAL
                 .ToListAsync();
         }
 

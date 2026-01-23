@@ -12,5 +12,8 @@ namespace Domain.Repositories.Interfaces
         Task<List<User>> GetAllUsersAsync();
         Task<User?> GetUserByIdAsync(Guid userId);
         Task UpdateUserStatusAsync(Guid userId, bool isOnline);
+
+        Task SetUserOfflineAsync(Guid userId);
+
     }
 }

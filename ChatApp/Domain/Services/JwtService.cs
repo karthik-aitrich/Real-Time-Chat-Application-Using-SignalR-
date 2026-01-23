@@ -20,10 +20,11 @@ namespace ChatApp.Services
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName ?? ""),
-                new Claim(ClaimTypes.Email, user.Email ?? "")
-            };
+        new Claim("userId", user.UserId.ToString()),                 // 🔥 REQUIRED
+        new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()), // ASP.NET standard
+        new Claim(ClaimTypes.Name, user.UserName ?? ""),
+        new Claim(ClaimTypes.Email, user.Email ?? "")
+    };
 
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_config["Jwt:Key"])
@@ -43,5 +44,7 @@ namespace ChatApp.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
     }
 }

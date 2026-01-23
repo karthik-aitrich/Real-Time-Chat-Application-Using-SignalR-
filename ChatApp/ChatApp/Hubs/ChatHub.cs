@@ -1,4 +1,5 @@
 ﻿using ChatApp.Services;
+using Domain.Enums;
 using Domain.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
@@ -18,38 +19,48 @@ namespace ChatApp.Hubs
             _groupChatService = groupChatService;
             _userService = userService;
         }
+
+
+
         public async Task SendGroupMessage(Guid groupId, Guid senderId, string message)
         {
-            await _groupChatService.SendGroupMessageAsync(groupId, senderId, message);
+            // 🔥 Let SERVICE handle everything
+            var dto = await _groupChatService.SendGroupMessageAsync(
+                groupId,
+                senderId,
+                message
+            );
 
+            // 🔥 Broadcast SAME DTO to group
             await Clients.Group(groupId.ToString())
-            .SendAsync("ReceiveGroupMessage", new
-            {
-            GroupId = groupId,
-            SenderId = senderId,
-            MessageText = message,
-            SentAt = DateTime.UtcNow
-            });
-
+                .SendAsync("ReceiveGroupMessage", dto);
         }
+
+
+
+
         public async Task SendMessage(Guid senderId, Guid receiverId, string message)
         {
-            await _chatService.SendMessageAsync(senderId, receiverId, message);
+            // 1️⃣ Save message & get it back
+            var savedMessage = await _chatService.SendMessageAsync(
+                senderId,
+                receiverId,
+                message
+            );
 
-            var latestMessage = (await _chatService.GetChatHistoryAsync(senderId, receiverId))
-                .Last();
-
-            // Send to receiver
+            // 2️⃣ Send to receiver
             await Clients.User(receiverId.ToString())
-                .SendAsync("ReceiveMessage", latestMessage);
+                .SendAsync("ReceiveMessage", savedMessage);
 
-            // Mark as delivered
-            await _chatService.MarkAsDelivered(latestMessage.MessageId);
-
-            // Notify sender
+            // 3️⃣ Send to sender (IMPORTANT)
             await Clients.User(senderId.ToString())
-                .SendAsync("MessageDelivered", latestMessage.MessageId);
+                .SendAsync("ReceiveMessage", savedMessage);
+
+            // 4️⃣ Mark as delivered
+            savedMessage.Status = MessageStatusEnum.Delivered;
+            await _chatService.MarkAsDelivered(savedMessage.MessageId);
         }
+
 
 
 
@@ -124,6 +135,8 @@ namespace ChatApp.Hubs
             await Clients.User(receiverId.ToString())
                 .SendAsync("UserStoppedTyping", senderId);
         }
+
+
 
 
     }

@@ -8,7 +8,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers() {
+  getAllUsers() {
   return this.http.get<User[]>(`${this.baseUrl}`);
 }
 }

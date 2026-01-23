@@ -17,6 +17,16 @@
   },
   {
     "ContainingType": "ChatApp.Controllers.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/v1/Auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.AuthController",
     "Method": "Register",
     "RelativePath": "api/v1/Auth/register",
     "HttpMethod": "POST",
@@ -70,8 +80,24 @@
   },
   {
     "ContainingType": "GroupController",
-    "Method": "GetUserGroups",
-    "RelativePath": "api/v1/Group/groups/{userId}",
+    "Method": "GetMembers",
+    "RelativePath": "api/v1/group/{groupId}/members",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupController",
+    "Method": "Get",
+    "RelativePath": "api/v1/group/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -86,19 +112,119 @@
   },
   {
     "ContainingType": "GroupController",
-    "Method": "CreateGroup",
-    "RelativePath": "api/v1/Group/groups/create",
+    "Method": "AddMember",
+    "RelativePath": "api/v1/group/add-member",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "groupName",
+        "Name": "groupId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupController",
+    "Method": "ChangeRole",
+    "RelativePath": "api/v1/group/change-role",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Domain.DTOs.ChangeRoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupController",
+    "Method": "Create",
+    "RelativePath": "api/v1/group/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
         "Type": "System.String",
         "IsRequired": false
       },
       {
         "Name": "creatorId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupController",
+    "Method": "CreateWithMembers",
+    "RelativePath": "api/v1/group/create-with-members",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Domain.DTOs.CreateGroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupController",
+    "Method": "Leave",
+    "RelativePath": "api/v1/group/leave",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupController",
+    "Method": "RemoveMember",
+    "RelativePath": "api/v1/group/remove-member",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "adminId",
         "Type": "System.Guid",
         "IsRequired": false
       }

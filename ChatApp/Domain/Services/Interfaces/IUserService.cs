@@ -12,6 +12,8 @@ namespace Domain.Services.Interfaces
         Task<List<User>> GetAllUsersAsync();
         Task SetUserOnlineAsync(Guid userId);
         Task SetUserOfflineAsync(Guid userId);
+        
+
     }
 }
 

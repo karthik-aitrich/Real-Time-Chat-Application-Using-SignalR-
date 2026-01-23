@@ -9,8 +9,16 @@ namespace Domain.Services.Interfaces
 {
     public interface IChatService
     {
-        Task SendMessageAsync(Guid senderId, Guid receiverId, string message);
+        Task<Message> SendMessageAsync(Guid senderId, Guid receiverId, string message);
+
+
         Task<List<Message>> GetChatHistoryAsync(Guid user1, Guid user2);
+        //Task<Message> SendAndReturnMessageAsync(
+//    Guid senderId,
+//    Guid receiverId,
+//    string message
+//);
+
 
 
 

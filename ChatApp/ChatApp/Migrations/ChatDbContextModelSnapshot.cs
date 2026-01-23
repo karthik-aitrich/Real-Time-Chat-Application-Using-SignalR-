@@ -175,6 +175,10 @@ namespace ChatApp.Migrations
                     b.Property<Guid>("SenderId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("SenderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("SentAt")
                         .HasColumnType("datetime2");
 

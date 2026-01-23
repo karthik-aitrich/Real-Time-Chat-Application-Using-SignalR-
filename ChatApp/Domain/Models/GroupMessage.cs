@@ -12,6 +12,7 @@ public class GroupMessage
 
     public Guid GroupId { get; set; }
     public Guid SenderId { get; set; }
+    public string SenderName { get; set; }
     public string MessageText { get; set; } = null!;
     public DateTime SentAt { get; set; }
 }

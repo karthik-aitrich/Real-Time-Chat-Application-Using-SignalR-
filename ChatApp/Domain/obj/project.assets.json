@@ -4038,11 +4038,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Domain.csproj",
+      "projectUniqueName": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\Domain.csproj",
+      "projectPath": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\karth\\.nuget\\packages\\",
-      "outputPath": "D:\\REAL TIME CHAT\\ChatApp\\Domain\\obj\\",
+      "outputPath": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

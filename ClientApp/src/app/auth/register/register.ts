@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./register.css'],
   imports: [CommonModule, FormsModule, RouterModule]
 })
-export class RegisterComponent {
+export class Register {
 
   userName = '';
   email = '';

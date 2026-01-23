@@ -1,0 +1,23 @@
+<div class="create-group">
+  <h2>Create New Group</h2>
+
+  <input
+    type="text"
+    placeholder="Group name"
+    [(ngModel)]="groupName"
+  />
+
+  <h4>Select members</h4>
+
+  <div *ngFor="let user of users">
+    <input
+      type="checkbox"
+      (change)="toggleUser(user.userId, $event)"
+    />
+    {{ user.userName }}
+  </div>
+
+  <div class="error" *ngIf="error">{{ error }}</div>
+
+  <button (click)="createGroup()">Create Group</button>
+</div>
