@@ -1,0 +1,39 @@
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+aside.sidebar {
+  width: 50%;         /* WhatsApp ratio */
+  min-width: 280px;
+  max-width: 450px;
+
+  height: 100vh;
+  flex-shrink: 0;
+
+  display: flex;
+}
+
+/* CHAT COLUMN */
+.chat-area {
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* 🚨 THIS WAS THE MISSING PIECE */
+.chat-router {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+aside.sidebar > app-sidebar {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}

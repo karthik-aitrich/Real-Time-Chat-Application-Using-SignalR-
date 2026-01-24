@@ -44,7 +44,8 @@ export const routes: Routes = [
       { path: 'group-info/:id', component: GroupInfo },
 
       // settings
-      { path: 'settings', component: Settings }
+      { path: 'settings', component: Settings },
+      
     ]
   }
 ];

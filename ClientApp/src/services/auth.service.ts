@@ -13,15 +13,25 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
- login(email: string, password: string) {
-  return this.http.post<LoginResponse>(`${this.baseUrl}/login`, { email, password })
+login(email: string, password: string) {
+  return this.http
+    .post<LoginResponse>(`${this.baseUrl}/login`, { email, password })
     .pipe(
       tap((res: LoginResponse) => {
         localStorage.setItem('token', res.token);
         localStorage.setItem('userId', res.userId);
+        localStorage.setItem('userName', res.userName);
+        localStorage.setItem('email', res.email);
       })
     );
 }
+
+
+getMe() {
+  return this.http.get<any>(`${this.baseUrl}/me`);
+}
+
+
 
   register(userName: string, email: string, password: string) {
   return this.http.post(
@@ -29,5 +39,36 @@ export class AuthService {
     { userName, email, password }
   );
 }
+
+logout() {
+  return this.http.post(`${this.baseUrl}/logout`, {});
+}
+
+
+changePassword(data: {
+  currentPassword: string;
+  newPassword: string;
+}) {
+  return this.http.post(
+    `${this.baseUrl}/change-password`,
+    data
+  );
+}
+
+
+forgotPassword(email: string) {
+  return this.http.post(
+    `${this.baseUrl}/forgot-password`,
+    { email }
+  );
+}
+
+resetPassword(token: string, newPassword: string) {
+  return this.http.post(
+    `${this.baseUrl}/reset-password`,
+    { token, newPassword }
+  );
+}
+
 
 }

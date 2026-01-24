@@ -14,6 +14,10 @@ namespace Domain.Models
         public string? PasswordHash { get; set; }
         public bool IsOnline { get; set; }
         public DateTime LastSeen { get; set; }
+
+        public string? ResetToken { get; set; }
+        public DateTime? ResetTokenExpiry { get; set; }
+
     }
 }
 

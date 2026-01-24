@@ -1,9 +1,53 @@
-<div class="login-box">
-  <h2>Register</h2>
+<div class="auth-page">
 
-  <input type="text" [(ngModel)]="userName" placeholder="Username">
-  <input type="email" [(ngModel)]="email" placeholder="Email">
-  <input type="password" [(ngModel)]="password" placeholder="Password">
+  <!-- LEFT BRAND -->
+  <div class="auth-brand">
+    <img src="assets/logo.jpeg" alt="Chatz logo" />
+    <h1>Chatz</h1>
+    <p>Join the conversation</p>
+  </div>
 
-  <button (click)="register()">Register</button>
+  <!-- RIGHT FORM -->
+  <div class="auth-card">
+
+    <h2>Create Account</h2>
+    <span class="subtitle">It takes less than a minute</span>
+
+    <!-- ⚠️ ERROR MESSAGE -->
+    <p class="error-text" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </p>
+
+    <input
+      type="text"
+      placeholder="Username"
+      [(ngModel)]="userName"
+    />
+
+    <input
+      type="email"
+      placeholder="Email address"
+      [(ngModel)]="email"
+    />
+
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+    />
+
+    <button
+  class="auth-btn"
+  (click)="register()"
+  [disabled]="!userName || !email || !password">
+  Register
+</button>
+
+    <p class="footer-text">
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+
+  </div>
+
 </div>

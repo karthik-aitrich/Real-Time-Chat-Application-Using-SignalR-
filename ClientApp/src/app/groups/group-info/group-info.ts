@@ -6,7 +6,8 @@ import { GroupService } from '../../../services/group.service';
 @Component({
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './group-info.html'
+  templateUrl: './group-info.html',
+  styleUrls: ['./group-info.css']
 })
 export class GroupInfo implements OnInit {
 

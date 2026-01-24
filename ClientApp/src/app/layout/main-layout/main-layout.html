@@ -1,15 +1,11 @@
-<div class="container-fluid vh-100 overflow-hidden">
-  <div class="row h-100">
+<div class="app-container">
+  <aside class="sidebar">
+    <app-sidebar></app-sidebar>
+  </aside>
 
-    <!-- SIDEBAR -->
-    <div class="col-3 p-0 border-end overflow-auto">
-      <app-sidebar></app-sidebar>
-    </div>
-
-    <!-- CHAT -->
-    <div class="col-9 p-0 d-flex flex-column">
+  <main class="chat-area">
+    <div class="chat-router">
       <router-outlet></router-outlet>
     </div>
-
-  </div>
+  </main>
 </div>

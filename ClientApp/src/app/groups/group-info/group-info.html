@@ -1,20 +1,49 @@
-<h2>Group Members</h2>
+<div class="group-info">
 
-<div *ngFor="let m of members">
+  <h3 class="title">Group Members</h3>
 
-  <b>{{m.userName}}</b>
-  <span *ngIf="m.role === 1"> (Admin)</span>
+  <div class="member-list">
 
-  <button *ngIf="m.userId !== myId" (click)="remove(m.userId)">
-    Remove
-  </button>
+    <div class="member-card" *ngFor="let m of members">
 
-  <button *ngIf="m.role === 0" (click)="changeRole(m.userId, 1)">
-    Make Admin
-  </button>
+      <div class="left">
+        <div class="avatar">
+          {{ m.userName[0] }}
+        </div>
+
+        <div class="details">
+          <div class="name">
+            {{ m.userName }}
+            <span class="admin-badge" *ngIf="m.role === 1">
+              Admin
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions" *ngIf="m.userId !== myId">
+        <button
+          class="btn admin"
+          *ngIf="m.role === 0"
+          (click)="changeRole(m.userId, 1)">
+          Make Admin
+        </button>
+
+        <button
+          class="btn remove"
+          (click)="remove(m.userId)">
+          Remove
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="leave-section">
+    <button class="leave-btn" (click)="leave()">
+      Leave Group
+    </button>
+  </div>
 
 </div>
-
-<hr>
-
-<button (click)="leave()">Leave Group</button>

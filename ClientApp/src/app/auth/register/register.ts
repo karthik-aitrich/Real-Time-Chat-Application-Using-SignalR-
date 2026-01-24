@@ -8,14 +8,17 @@ import { CommonModule } from '@angular/common';
   selector: 'app-register',
   standalone: true,
   templateUrl: './register.html',
-  styleUrls: ['./register.css'],
+  styleUrls: ['../auth-layout.css'],
   imports: [CommonModule, FormsModule, RouterModule]
 })
+
 export class Register {
 
   userName = '';
   email = '';
   password = '';
+
+  errorMessage = '';
 
   constructor(
     private authService: AuthService,
@@ -23,11 +26,27 @@ export class Register {
   ) {}
 
   register() {
-    this.authService.register(this.userName, this.email, this.password)
-      .subscribe(() => {
-        alert('Registration successful');
-        this.router.navigate(['/']);
 
+    // 🔴 EMPTY FIELD CHECK
+    if (!this.userName || !this.email || !this.password) {
+      this.errorMessage = 'All fields are required';
+      return;
+    }
+
+    this.errorMessage = '';
+
+    this.authService.register(this.userName, this.email, this.password)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          if (err.status === 400) {
+            this.errorMessage = 'User already exists or invalid data';
+          } else {
+            this.errorMessage = 'Registration failed. Try again.';
+          }
+        }
       });
   }
 }

@@ -1,23 +1,75 @@
-<div class="create-group">
-  <h2>Create New Group</h2>
+<div class="chat-window create-group">
 
-  <input
-    type="text"
-    placeholder="Group name"
-    [(ngModel)]="groupName"
-  />
-
-  <h4>Select members</h4>
-
-  <div *ngFor="let user of users">
-    <input
-      type="checkbox"
-      (change)="toggleUser(user.userId, $event)"
-    />
-    {{ user.userName }}
+  <!-- HEADER -->
+  <div class="chat-header">
+    <div class="header-left">
+      <div class="name">Create Group</div>
+      <div class="status">Add members</div>
+    </div>
   </div>
 
-  <div class="error" *ngIf="error">{{ error }}</div>
+  <!-- BODY -->
+  <div class="chat-body">
 
-  <button (click)="createGroup()">Create Group</button>
+    <!-- GROUP NAME -->
+    <div class="card">
+      <label>Group name</label>
+      <input
+        type="text"
+        placeholder="Enter group name"
+        [(ngModel)]="groupName"
+      />
+    </div>
+
+    <!-- MEMBERS -->
+    <div class="card">
+      <label>Select members</label>
+
+      <div class="member-list">
+        <div
+          class="member"
+          *ngFor="let user of users"
+          [class.selected]="selectedUserIds.includes(user.userId)"
+          (click)="toggleUser(user.userId, $event)"
+        >
+
+          <div class="member-info">
+            <div class="avatar">
+              {{ user.userName?.[0] }}
+            </div>
+            <div class="username">
+              {{ user.userName }}
+            </div>
+          </div>
+
+          <div class="member-check">
+            <input
+              type="checkbox"
+              [checked]="selectedUserIds.includes(user.userId)"
+              (click)="$event.stopPropagation()"
+              (change)="toggleUser(user.userId, $event)"
+            />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ERROR -->
+    <div class="error" *ngIf="error">
+      {{ error }}
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="chat-input">
+    <button
+      class="create-btn"
+      (click)="createGroup()"
+      [disabled]="!groupName || selectedUserIds.length === 0">
+      Create Group
+    </button>
+  </div>
+
 </div>

@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   templateUrl: './create-group.html',
   imports: [CommonModule,FormsModule],
+  styleUrls: ['../../shared/styles/chat-base.css','./create-group.css']
 })
 export class CreateGroup implements OnInit {
 
@@ -25,21 +26,36 @@ export class CreateGroup implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userService.getAllUsers().subscribe(res => {
-      // remove yourself from list
+  console.log('CreateGroup INIT');
+
+  this.userService.getAllUsers().subscribe({
+    next: (res) => {
+      console.log('USERS API RESPONSE:', res);
+
       const myId = localStorage.getItem('userId');
       this.users = res.filter(u => u.userId !== myId);
-    });
-  }
 
-  toggleUser(userId: string, event: any) {
-    if (event.target.checked) {
-      this.selectedUserIds.push(userId);
-    } else {
-      this.selectedUserIds =
-        this.selectedUserIds.filter(id => id !== userId);
+      console.log('FILTERED USERS:', this.users);
+    },
+    error: (err) => {
+      console.error('GET USERS ERROR:', err);
+      this.error = 'Failed to load users';
     }
+  });
+}
+
+
+toggleUser(userId: string, event: any) {
+  const exists = this.selectedUserIds.includes(userId);
+
+  if (exists) {
+    this.selectedUserIds =
+      this.selectedUserIds.filter(id => id !== userId);
+  } else {
+    this.selectedUserIds.push(userId);
   }
+}
+
 
   createGroup() {
   const payload = {

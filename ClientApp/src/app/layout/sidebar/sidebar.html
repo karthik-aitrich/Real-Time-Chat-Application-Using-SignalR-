@@ -1,30 +1,68 @@
-<div class="p-3">
+<div class="sidebar">
 
-  <h6>Users</h6>
-  <ul class="list-group mb-3">
-    <li class="list-group-item"
-        *ngFor="let user of users"
-        (click)="openChat(user)">
-      {{ user.userName }}
-    </li>
-  </ul>
+  <!-- LOGO -->
+  <div class="sidebar-header">
+    <img src="assets/logo.jpeg" class="logo-img" />
+    <span class="logo-text">Chatz</span>
+  </div>
 
-  <h6>Groups</h6>
-<ul class="list-group mb-3">
- <li class="list-group-item list-group-item-action"
-    *ngFor="let group of groups"
-    (click)="openGroup(group)">
-  {{ group.groupName }}
-</li>
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input type="text" placeholder="Search..." />
+  </div>
 
+  <!-- TABS -->
+  <div class="tabs">
+    <button
+      [class.active]="activeTab === 'chats'"
+      (click)="activeTab = 'chats'">
+      Chats
+    </button>
+    <button
+      [class.active]="activeTab === 'groups'"
+      (click)="activeTab = 'groups'">
+      Groups
+    </button>
+  </div>
 
-<button (click)="createNewGroup()">+ New Group</button>
+  <!-- CHAT LIST -->
+  <div class="list" *ngIf="activeTab === 'chats'">
+    <div
+      class="list-item"
+      *ngFor="let user of users"
+      (click)="openChat(user)">
+      <div class="avatar">{{ user.userName[0] }}</div>
+      <div class="info">
+        <div class="name">{{ user.userName }}</div>
+        <div class="sub">Tap to chat</div>
+      </div>
+    </div>
+  </div>
 
+  <!-- GROUP LIST -->
+  <div class="list" *ngIf="activeTab === 'groups'">
+    <div
+      class="list-item"
+      *ngFor="let group of groups"
+      (click)="openGroup(group)">
+      <div class="avatar group">👥</div>
+      <div class="info">
+        <div class="name">{{ group.groupName }}</div>
+        <div class="sub">Group chat</div>
+      </div>
+    </div>
 
+    <!-- CREATE GROUP -->
+    <button class="new-group-btn" (click)="createNewGroup()">
+      + New Group
+    </button>
+  </div>
 
-</ul>
-
-
-  <button class="btn btn-success w-100">Settings</button>
+  <!-- SETTINGS -->
+  <div class="sidebar-footer">
+    <button class="settings-btn" (click)="openSettings()">
+      ⚙ Settings
+    </button>
+  </div>
 
 </div>

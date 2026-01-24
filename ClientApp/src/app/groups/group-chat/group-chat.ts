@@ -1,14 +1,18 @@
 import { Component,OnInit,ViewChild,ElementRef,AfterViewChecked} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute ,Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ChatService } from '../../../services/chat.service';
+
 
 @Component({
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './group-chat.html',
-  styleUrls: ['./group-chat.css']
+    styleUrls: [
+    
+    '../../shared/styles/chat-base.css'
+  ]
 })
 export class GroupChat implements OnInit, AfterViewChecked {
 
@@ -27,7 +31,8 @@ export class GroupChat implements OnInit, AfterViewChecked {
 
   constructor(
     private route: ActivatedRoute,
-    private chat: ChatService
+    private chat: ChatService,
+    private router: Router, 
   ) {}
 
   ngOnInit() {
@@ -61,6 +66,15 @@ export class GroupChat implements OnInit, AfterViewChecked {
       this.shouldScroll = true;
     });
   }
+get membersCount(): number {
+  const uniqueMembers = new Set(
+    this.messages
+      .filter(m => m.senderId)
+      .map(m => m.senderId)
+  );
+
+  return uniqueMembers.size;
+}
 
   loadGroupChat() {
     this.chat.getGroupHistory(this.groupId).subscribe({
@@ -114,5 +128,11 @@ export class GroupChat implements OnInit, AfterViewChecked {
         this.chatBody.nativeElement.scrollHeight;
     }
   }
+
+openGroupInfo() {
+  this.router.navigate(['/app/group-info', this.groupId]);
+}
+
+
 }
 

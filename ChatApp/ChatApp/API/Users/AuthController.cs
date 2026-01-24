@@ -92,8 +92,68 @@ namespace ChatApp.Controllers
             });
         }
 
-       
+        [Authorize]
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordDto dto)
+        {
+            var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+                return Unauthorized();
+
+            var currentHash = HashPassword(dto.CurrentPassword);
+
+            if (user.PasswordHash != currentHash)
+                return BadRequest("Current password is incorrect");
+
+            user.PasswordHash = HashPassword(dto.NewPassword);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Password changed successfully" });
+        }
+
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordDto dto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+
+            if (user == null)
+                return Ok(); // security: don't reveal user existence
+
+            var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+
+            user.ResetToken = token;
+            user.ResetTokenExpiry = DateTime.UtcNow.AddMinutes(15);
+
+            await _context.SaveChangesAsync();
+
+            // TODO: send email (for now log it)
+            Console.WriteLine($"RESET TOKEN: {token}");
+
+            return Ok(new { message = "Password reset link sent" });
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordDto dto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u =>
+                u.ResetToken == dto.Token &&
+                u.ResetTokenExpiry > DateTime.UtcNow
+            );
+
+            if (user == null)
+                return BadRequest("Invalid or expired token");
+
+            user.PasswordHash = HashPassword(dto.NewPassword);
+            user.ResetToken = null;
+            user.ResetTokenExpiry = null;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Password reset successful" });
+        }
 
 
 

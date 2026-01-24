@@ -18,6 +18,8 @@ export class Sidebar implements OnInit {
 
   users: any[] = [];
   groups: any[] = [];
+  activeTab: 'chats' | 'groups' = 'chats';
+
 
   constructor(
     private userService: UserService,

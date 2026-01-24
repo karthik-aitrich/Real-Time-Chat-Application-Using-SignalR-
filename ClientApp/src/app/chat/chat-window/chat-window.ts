@@ -14,7 +14,10 @@ import { ChatService } from '../../../services/chat.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './chat-window.html',
-  styleUrls: ['./chat-window.css']
+   styleUrls: [
+    './chat-window.css',
+    '../../shared/styles/chat-base.css'
+  ]
 })
 export class ChatWindow implements OnInit, AfterViewChecked {
 

@@ -1,62 +1,32 @@
-<div class="d-flex flex-column vh-100">
+<div class="chat-window">
 
-  <!-- HEADER -->
-  <div class="border-bottom bg-white px-3 py-2 d-flex justify-content-between align-items-center">
-    <h6 class="mb-0">{{ selectedName || 'Select a chat' }}</h6>
-    <small class="text-muted">Offline</small>
+  <div class="chat-header">
+    <div>
+      <div class="name">{{ selectedName || 'Select a chat' }}</div>
+      <div class="status">Offline</div>
+    </div>
   </div>
 
-  <!-- MESSAGES -->
-  <div #chatBody class="flex-grow-1 overflow-auto p-3 bg-light">
+  <div #chatBody class="chat-body">
+    <div *ngIf="isLoading" class="loading">Loading messages...</div>
 
-  <div *ngIf="isLoading === true" class="text-center text-muted">
-    Loading messages...
-  </div>
-
-
-<!-- <div *ngFor="let msg of messages">
-  ...
-</div> -->
-
-
-    <ng-container *ngIf="isLoading === false">
     <div *ngFor="let msg of messages"
-         class="mb-2 d-flex"
-         [ngClass]="msg.senderId === senderId ? 'justify-content-end' : 'justify-content-start'">
+         class="message-row"
+         [ngClass]="msg.senderId === senderId ? 'me' : 'other'">
 
-      <div class="px-3 py-2 rounded"
-           [ngClass]="msg.senderId === senderId ? 'bg-success text-white' : 'bg-white border'">
-
-        <small class="text-muted d-block text-end">
+      <div class="bubble">
+        <div class="text">{{ msg.messageText }}</div>
+        <div class="meta">
           {{ msg.sentAt | date:'shortTime' }}
-        </small>
-
-        {{ msg.messageText }}
-
-        <span class="status ms-2">
-          <ng-container [ngSwitch]="msg.status">
-            <span *ngSwitchCase="0">✔</span>
-            <span *ngSwitchCase="1">✔✔</span>
-            <span *ngSwitchCase="2">✔✔</span>
-          </ng-container>
-        </span>
-
+        </div>
       </div>
+
     </div>
-  </ng-container>
+  </div>
 
-</div>
-
-  <!-- INPUT -->
-  <div class="border-top bg-white p-3">
-    <div class="input-group">
-      <input type="text"
-             class="form-control"
-             placeholder="Type a message..."
-             [(ngModel)]="message" />
-
-      <button class="btn btn-success" (click)="send()">Send</button>
-    </div>
+  <div class="chat-input">
+    <input [(ngModel)]="message" placeholder="Type a message..." />
+    <button (click)="send()">➤</button>
   </div>
 
 </div>
