@@ -14,15 +14,21 @@ namespace ChatApp.Controllers
 {
     public class AuthController : BaseAPIController<AuthController>
     {
+
+
         private readonly ChatDbContext _context;
         private readonly JwtService _jwtService;
         private readonly IUserService _userService;
-
-        public AuthController(ChatDbContext context, JwtService jwtService, IUserService userService)
+        private readonly IEmailService _emailService;
+        private readonly IAuthService _authService;
+        public AuthController(ChatDbContext context, JwtService jwtService, IUserService userService,IEmailService emailService,IAuthService authService)    
         {
             _context = context;
             _jwtService = jwtService;
             _userService = userService;
+            _emailService=emailService;
+            _authService = authService;
+
         }
 
         // POST: api/v1/auth/register
@@ -43,15 +49,34 @@ namespace ChatApp.Controllers
                 LastSeen = DateTime.Now
             };
 
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
+      
+            await _emailService.SendEmailAsync(user.Email);
             //return Ok("Registration successful");
-            return Ok(new { message = "Registration successful" });
+            return Ok();
 
         }
+		[HttpPost("verify-otp")]
+		public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpDto dto)
+        {
+			bool isValid = await _authService.verifyOtp(dto.Email, dto.Otp);
+			if (!isValid)
+				return BadRequest(new { message = "Invalid or expired OTP" });
+			var user = new User
+			{
+				UserId = Guid.NewGuid(),
+				UserName = dto.UserName,
+				Email = dto.Email,
+				PasswordHash = HashPassword(dto.Password),
+				IsOnline = false,
+				LastSeen = DateTime.Now
+			};
+			_context.Users.Add(user);
+			await _context.SaveChangesAsync();
+			// ✅ OTP verified – create account here
+			return Ok(new { message = "OTP verified. Account created successfully." });
+		}
 
-        [Authorize]
+		[Authorize]
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
