@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\ChatApp\\Migrations\\20260124041627_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ChatApp\\Migrations\\20260124041627_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\real-time-chat-application-using-signalr-\\chatapp\\chatapp\\api\\users\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\api\\users\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\real-time-chat-application-using-signalr-\\chatapp\\chatapp\\migrations\\20260124041627_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\migrations\\20260124041627_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\real-time-chat-application-using-signalr-\\chatapp\\chatapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\real-time-chat-application-using-signalr-\\chatapp\\domain\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|solutionrelative:domain\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|d:\\real time chat\\real-time-chat-application-using-signalr-\\chatapp\\chatapp\\api\\users\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{50ED4C44-CDCC-4BE3-A90D-2391896375B2}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\api\\users\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{170E1D06-7367-45ED-98D2-055FC58C0A40}|Domain\\Domain.csproj|d:\\real time chat\\real-time-chat-application-using-signalr-\\chatapp\\domain\\dtos\\forgotpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -134,7 +134,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -142,7 +142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "20260124041627_init.cs",
               "DocumentMoniker": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\ChatApp\\Migrations\\20260124041627_init.cs",
               "RelativeDocumentMoniker": "ChatApp\\Migrations\\20260124041627_init.cs",
@@ -163,18 +163,17 @@
               "RelativeToolTip": "Domain\\DTOs\\ChangePasswordDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T03:53:14.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T03:53:14.65Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\ChatApp\\API\\Users\\AuthController.cs",
               "RelativeDocumentMoniker": "ChatApp\\API\\Users\\AuthController.cs",
               "ToolTip": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\ChatApp\\API\\Users\\AuthController.cs",
               "RelativeToolTip": "ChatApp\\API\\Users\\AuthController.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAKcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-23T10:49:20.128Z",
               "EditorCaption": ""
@@ -189,8 +188,7 @@
               "RelativeToolTip": "Domain\\Services\\JwtService.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAADwvyEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T11:11:31.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T11:11:31.245Z"
             },
             {
               "$type": "Document",
@@ -202,8 +200,7 @@
               "RelativeToolTip": "ChatApp\\Services\\GroupService.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAiwBsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:53:44.271Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:53:44.271Z"
             },
             {
               "$type": "Document",
@@ -215,8 +212,7 @@
               "RelativeToolTip": "ChatApp\\Extensions\\JwtExtension.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAswB4AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:52:29.028Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:52:29.028Z"
             },
             {
               "$type": "Document",
@@ -228,8 +224,7 @@
               "RelativeToolTip": "ChatApp\\Repositories\\GroupRepository.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAmwBMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:53:51.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:53:51.262Z"
             },
             {
               "$type": "Document",
@@ -241,12 +236,11 @@
               "RelativeToolTip": "ChatApp\\API\\Users\\GroupController.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAgwCYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:53:47.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:53:47.97Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\ChatApp\\appsettings.json",
               "RelativeDocumentMoniker": "ChatApp\\appsettings.json",
@@ -254,8 +248,7 @@
               "RelativeToolTip": "ChatApp\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-23T07:44:50.793Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:44:50.793Z"
             },
             {
               "$type": "Document",
@@ -267,12 +260,11 @@
               "RelativeToolTip": "Domain\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T03:54:03.887Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T03:54:03.887Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ResetPasswordDto.cs",
               "DocumentMoniker": "D:\\REAL TIME CHAT\\Real-Time-Chat-Application-Using-SignalR-\\ChatApp\\Domain\\DTOs\\ResetPasswordDto.cs",
               "RelativeDocumentMoniker": "Domain\\DTOs\\ResetPasswordDto.cs",
@@ -280,8 +272,7 @@
               "RelativeToolTip": "Domain\\DTOs\\ResetPasswordDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T03:55:36.077Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T03:55:36.077Z"
             },
             {
               "$type": "Document",
@@ -293,8 +284,7 @@
               "RelativeToolTip": "Domain\\DTOs\\ForgotPasswordDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T03:54:45.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T03:54:45.98Z"
             },
             {
               "$type": "Document",
@@ -306,8 +296,7 @@
               "RelativeToolTip": "Domain\\DTOs\\CreateGroupDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T08:43:23.001Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T08:43:23.001Z"
             },
             {
               "$type": "Document",
@@ -319,8 +308,7 @@
               "RelativeToolTip": "Domain\\Services\\Interfaces\\IGroupService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:51:03.545Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:51:03.545Z"
             },
             {
               "$type": "Document",
@@ -332,8 +320,7 @@
               "RelativeToolTip": "Domain\\Repositories\\Interfaces\\IGroupRepository.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAowA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:51:06.806Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:51:06.806Z"
             },
             {
               "$type": "Document",
@@ -345,8 +332,7 @@
               "RelativeToolTip": "ChatApp\\Services\\GroupChatService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:46:32.85Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:46:32.85Z"
             },
             {
               "$type": "Document",
@@ -358,8 +344,7 @@
               "RelativeToolTip": "Domain\\Repositories\\Interfaces\\IGroupChatRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:47:19.246Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:47:19.246Z"
             },
             {
               "$type": "Document",
@@ -371,8 +356,7 @@
               "RelativeToolTip": "ChatApp\\Repositories\\GroupChatRepository.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAmwCAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:45:47.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:45:47.381Z"
             },
             {
               "$type": "Document",
@@ -384,8 +368,7 @@
               "RelativeToolTip": "ChatApp\\Hubs\\ChatHub.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAqwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:53:38.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:53:38.768Z"
             },
             {
               "$type": "Document",
@@ -397,8 +380,7 @@
               "RelativeToolTip": "Domain\\Services\\Interfaces\\IGroupChatService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:51:22.662Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:51:22.662Z"
             },
             {
               "$type": "Document",
@@ -410,8 +392,7 @@
               "RelativeToolTip": "ChatApp\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAqwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T08:20:21.367Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T08:20:21.367Z"
             },
             {
               "$type": "Document",
@@ -423,8 +404,7 @@
               "RelativeToolTip": "Domain\\DTOs\\GroupMessageDto.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAADwvwwAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:49:54.575Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:49:54.575Z"
             },
             {
               "$type": "Document",
@@ -436,8 +416,7 @@
               "RelativeToolTip": "ChatApp\\API\\Users\\GroupChatController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAMwBEAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:52:42.549Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:52:42.549Z"
             },
             {
               "$type": "Document",
@@ -449,8 +428,7 @@
               "RelativeToolTip": "Domain\\DTOs\\GroupMemberDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:48:27.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:48:27.892Z"
             },
             {
               "$type": "Document",
@@ -462,8 +440,7 @@
               "RelativeToolTip": "ChatApp\\Extensions\\DatabaseExtension.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAzwB4AAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:44:30.276Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:44:30.276Z"
             },
             {
               "$type": "Document",
@@ -475,8 +452,7 @@
               "RelativeToolTip": "ChatApp\\Data\\ChatDbContext.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAiwA4AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:58:09.337Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:58:09.337Z"
             },
             {
               "$type": "Document",
@@ -488,8 +464,7 @@
               "RelativeToolTip": "Domain\\Services\\Interfaces\\IChatService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T08:02:52.528Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T08:02:52.528Z"
             },
             {
               "$type": "Document",
@@ -501,8 +476,7 @@
               "RelativeToolTip": "Domain\\Services\\Interfaces\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T08:02:23.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T08:02:23.31Z"
             },
             {
               "$type": "Document",
@@ -514,8 +488,7 @@
               "RelativeToolTip": "ChatApp\\Program.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAAAEUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:54:04.662Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:54:04.662Z"
             },
             {
               "$type": "Document",

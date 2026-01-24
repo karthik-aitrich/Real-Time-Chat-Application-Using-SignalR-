@@ -1,16 +1,20 @@
-<div class="settings-wrapper">
-  <div class="profile-card">
-    <div class="avatar">
-      {{ userName[0] }}
-    </div>
+<div class="settings-card">
 
-    <div class="info">
+  <div class="user-info">
+    <div class="avatar">{{ userName[0] }}</div>
+
+    <div class="details">
       <div class="name">{{ userName }}</div>
       <div class="email">{{ email }}</div>
     </div>
-
-    <button class="logout-btn" (click)="logout()">
-      Logout
-    </button>
   </div>
+
+  <button class="action-btn" routerLink="/change-password">
+    🔒 Change Password
+  </button>
+
+  <button class="logout-btn" (click)="logout()">
+    🚪 Logout
+  </button>
+
 </div>

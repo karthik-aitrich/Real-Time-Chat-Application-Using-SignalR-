@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-change-password',
-  imports: [CommonModule,FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './change-password.html',
-  styleUrl: './change-password.css',
+  styleUrls: ['./change-password.css']
 })
 export class ChangePassword {
 
@@ -15,7 +16,10 @@ export class ChangePassword {
   newPassword = '';
   confirmPassword = '';
 
-  constructor(private auth: AuthService) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   changePassword() {
     if (this.newPassword !== this.confirmPassword) {
@@ -27,9 +31,17 @@ export class ChangePassword {
       currentPassword: this.currentPassword,
       newPassword: this.newPassword
     }).subscribe({
-      next: () => alert('Password updated'),
-      error: () => alert('Invalid current password')
+      next: () => {
+        alert('Password changed successfully');
+        this.router.navigate(['/app/settings']);
+      },
+      error: err => {
+        alert(err.error || 'Failed to change password');
+      }
     });
   }
-}
 
+  goToForgot() {
+    this.router.navigate(['/forgot-password']);
+  }
+}

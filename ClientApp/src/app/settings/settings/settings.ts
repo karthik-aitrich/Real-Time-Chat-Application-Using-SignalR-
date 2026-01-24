@@ -1,26 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './settings.html'
+  templateUrl: './settings.html',
+  styleUrls: ['./settings.css']
 })
-export class Settings implements OnInit {
+export class Settings {
 
-  userName = '';
-  email = '';
+  userName = localStorage.getItem('userName') ?? 'User';
+  email = localStorage.getItem('email') ?? '';
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    this.userName = localStorage.getItem('userName') || 'User';
-    this.email = localStorage.getItem('email') || '';
-  }
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   logout() {
-    localStorage.clear();
-    this.router.navigate(['/login']);
+    this.auth.logout().subscribe(() => {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    });
   }
 }
