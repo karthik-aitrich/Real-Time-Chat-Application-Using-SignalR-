@@ -55,6 +55,20 @@ namespace ChatApp.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<User> viewprofile (Guid userId)
+        {
+            try
+            {
+               var user= await _context.Users.Where(e => e.UserId == userId).FirstOrDefaultAsync();
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-    }
+        }
+
+
+	}
 }

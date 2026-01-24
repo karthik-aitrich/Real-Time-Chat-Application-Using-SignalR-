@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,8 @@ namespace Domain.Models
         public string? PasswordHash { get; set; }
         public bool IsOnline { get; set; }
         public DateTime LastSeen { get; set; }
-
-        public string? ResetToken { get; set; }
+		public string ProfilePhoto { get; set; } = null!;
+		public string? ResetToken { get; set; }
         public DateTime? ResetTokenExpiry { get; set; }
 
     }

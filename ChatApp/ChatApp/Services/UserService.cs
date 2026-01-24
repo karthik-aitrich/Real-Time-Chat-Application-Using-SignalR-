@@ -27,5 +27,9 @@ namespace ChatApp.Services
         {
             await _userRepo.UpdateUserStatusAsync(userId, false);
         }
+        public async Task<User> viewprofile(Guid userId)
+        { 
+           return await _userRepo.viewprofile(userId);
+        }
     }
 }
