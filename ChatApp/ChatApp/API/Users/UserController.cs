@@ -22,6 +22,12 @@ namespace ChatApp.Controllers
             return Ok(users);
         }
 
+		[HttpGet("view-profile")]
+		public async Task<IActionResult> viewprofile(Guid id)
+		{
+			var users = await _userService.GetAllUsersAsync();
+			return Ok(users);
+		}
 
-    }
+	}
 }

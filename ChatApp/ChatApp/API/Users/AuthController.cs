@@ -33,13 +33,13 @@ namespace ChatApp.Controllers
 
         // POST: api/v1/auth/register
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterDto dto)
+        public async Task<IActionResult> Register([FromForm]RegisterDto dto)
         {
             var exists = await _context.Users.AnyAsync(u => u.Email == dto.Email);
             if (exists)
                 return BadRequest("Email already exists");
-
-            var user = new User
+			var photoUrl = await SaveProfilePhoto(dto.ProfilePhoto);
+			var user = new User
             {
                 UserId = Guid.NewGuid(),
                 UserName = dto.UserName,
@@ -55,6 +55,23 @@ namespace ChatApp.Controllers
             return Ok();
 
         }
+		private async Task<string> SaveProfilePhoto(IFormFile file)
+		{
+			var allowedTypes = new[] { "image/jpeg", "image/png" };
+			if (!allowedTypes.Contains(file.ContentType))
+				throw new Exception("Invalid image type");
+
+			var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+			var folderPath = Path.Combine("wwwroot", "uploads", "profile");
+			Directory.CreateDirectory(folderPath);
+
+			var filePath = Path.Combine(folderPath, fileName);
+
+			using var stream = new FileStream(filePath, FileMode.Create);
+			await file.CopyToAsync(stream);
+
+			return $"/uploads/profile/{fileName}";
+		}
 		[HttpPost("verify-otp")]
 		public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpDto dto)
         {
