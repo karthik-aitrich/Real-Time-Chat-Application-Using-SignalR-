@@ -1,5 +1,7 @@
 ﻿using ChatApp.Extensions;
 using ChatApp.Hubs;
+using ChatApp.SignalR;
+using Microsoft.AspNetCore.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
+
 
 builder.Services.AddCors(options =>
 {

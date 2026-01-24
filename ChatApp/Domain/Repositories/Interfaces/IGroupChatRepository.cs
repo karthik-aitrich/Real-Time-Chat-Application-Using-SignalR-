@@ -7,7 +7,8 @@ namespace Domain.Repositories.Interfaces
     {
         //Task SaveGroupMessageAsync(GroupMessage message);
         Task<GroupMessage> AddMessageAsync(Guid groupId, Guid senderId, string message);
-
+        Task<bool> HasUserSeenMessageAsync(Guid messageId, Guid userId);
+        Task AddMessageSeenAsync(GroupMessageSeen seen);
 
         Task<IEnumerable<GroupMessage>> GetGroupMessagesAsync(Guid groupId);
 

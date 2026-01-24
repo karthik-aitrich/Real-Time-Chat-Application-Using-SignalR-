@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { UsersResolver } from './resolvers/users.resolver';
 import { MainLayout } from './layout/main-layout/main-layout';
 import { Login } from './auth/login/login';
 import { Register } from './auth/register/register';
@@ -10,42 +11,39 @@ import { Empty } from './empty/empty/empty';
 
 export const routes: Routes = [
 
-  // Default → Login
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
   // Auth
   { path: 'login', component: Login },
   { path: 'register', component: Register },
 
-  // Main App (After Login)
+  // App shell
   {
     path: 'app',
     component: MainLayout,
+    resolve: {
+    users: UsersResolver
+  },
     children: [
 
-      // default empty screen
       { path: '', component: Empty },
 
-      // ✅ CREATE GROUP — MUST COME FIRST
-      {
-        path: 'group/create',
-        loadComponent: () =>
-          import('./groups/create-group/create-group')
-            .then(m => m.CreateGroup)
-      },
-
-      // user chat
-      { path: 'chat/:id', component: ChatWindow, runGuardsAndResolvers: 'always' },
-
-      // group chat
+      { path: 'chat/:id', component: ChatWindow },
       { path: 'group/:id', component: GroupChat },
-
-      // group info
       { path: 'group-info/:id', component: GroupInfo },
 
-      // settings
-      { path: 'settings', component: Settings },
-      
+      {
+        path: 'settings',
+        component: Settings,
+        children: [
+          {
+            path: 'change-password',
+            loadComponent: () =>
+              import('./settings/change-password/change-password')
+                .then(m => m.ChangePassword)
+          }
+        ]
+      }
     ]
   }
 ];

@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { UserService } from '../../../services/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../../services/group.service';
-import { ChatService } from '../../../services/chat.service';
-import { ChangeDetectorRef } from '@angular/core';
-
 
 @Component({
   selector: 'app-sidebar',
@@ -20,70 +16,54 @@ export class Sidebar implements OnInit {
   groups: any[] = [];
   activeTab: 'chats' | 'groups' = 'chats';
 
-
   constructor(
-    private userService: UserService,
+    private route: ActivatedRoute,
     private groupService: GroupService,
-    private chat: ChatService,
-    private router: Router,
-     private cdr: ChangeDetectorRef
+    private router: Router
   ) {}
 
- ngOnInit() {
-  this.userService.getAllUsers().subscribe(u => {
-    console.log('Users loaded:', u);
-    this.users = u.filter(x => x.userId !== localStorage.getItem('userId'));
+ngOnInit(): void {
+  console.log('Sidebar INIT');
 
-    this.cdr.detectChanges();   // 👈 FORCE UI UPDATE
+  const resolvedUsers = this.route.snapshot.data['users'] ?? [];
+
+  const currentUserId = localStorage.getItem('userId');
+
+  this.users = resolvedUsers.filter(
+    (u: any) => u.userId !== currentUserId
+  );
+  console.log(this.route.snapshot.data);
+
+
+  this.groupService.getMyGroups().subscribe(groups => {
+    this.groups = groups;
   });
-  
-
-  this.groupService.getMyGroups().subscribe(g => {
-  console.log('Groups loaded:', g);   // 👈 ADD THIS
-  this.groups = g;
-  this.cdr.detectChanges();
-  console.log(g);
-
-});
-
-
-
-
-  this.chat.startConnection();
 }
 
 
-openChat(user: any) {
-  this.router.navigate(
-    ['/app/chat', user.userId],
-    { state: { userName: user.userName } }
-  );
-}
+  openChat(user: any) {
+    this.router.navigate(
+      ['/app/chat', user.userId],
+      { state: { userName: user.userName } }
+    );
+  }
 
+  openGroup(group: any) {
+    this.router.navigate(
+      ['/app/group', group.groupId],
+      { state: { groupName: group.groupName } }
+    );
+  }
 
-
-
-openGroup(group: any) {
-  this.router.navigate(
-    ['/app/group', group.groupId],
-    { state: { groupName: group.groupName } }
-  );
-}
-createNewGroup() {
-  this.router.navigate(['/app/group/create']);
-}
-
-
-
-
+  createNewGroup() {
+    this.router.navigate(['/app/group/create']);
+  }
 
   openSettings() {
     this.router.navigate(['/app/settings']);
   }
 
-//   trackUser(_: number, user: any) {
-//   return user.userId;
-// }
-
+  trackUser(_: number, user: any) {
+    return user.userId;
+  }
 }
-

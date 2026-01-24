@@ -16,6 +16,9 @@ namespace ChatApp.Data
         public DbSet<UserStatus> UserStatuses { get; set; }
         public DbSet<Notification> Notifications { get; set; }
 
+        public DbSet<GroupMessageSeen> GroupMessageSeens { get; set; }
+
+        //public DbSet<group>
         public DbSet<GroupMessage> GroupMessages { get; set; }
     }
 }

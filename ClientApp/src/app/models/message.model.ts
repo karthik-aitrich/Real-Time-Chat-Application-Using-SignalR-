@@ -1,7 +1,8 @@
 export interface Message {
-  messageId?: string;
+  messageId: string;
   senderId: string;
   receiverId: string;
   messageText: string;
-  sentAt: string;
+  sentAt: Date;
+  status: 'Sent' | 'Delivered' | 'Seen';
 }

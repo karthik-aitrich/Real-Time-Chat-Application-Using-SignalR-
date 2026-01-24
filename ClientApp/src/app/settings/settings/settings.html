@@ -1,20 +1,54 @@
-<div class="settings-card">
+<div class="chat-window">
 
-  <div class="user-info">
-    <div class="avatar">{{ userName[0] }}</div>
-
-    <div class="details">
-      <div class="name">{{ userName }}</div>
-      <div class="email">{{ email }}</div>
+  <!-- HEADER -->
+  <div class="chat-header">
+    <div class="header-left">
+      <div class="name">Settings</div>
+      <div class="status">Account & Security</div>
     </div>
   </div>
 
-  <button class="action-btn" routerLink="/change-password">
-    🔒 Change Password
-  </button>
+  <!-- BODY -->
+  <div class="settings-body">
 
-  <button class="logout-btn" (click)="logout()">
-    🚪 Logout
-  </button>
+    <!--  BLUR OVERLAY -->
+    <!-- <div
+      class="global-blur"
+      *ngIf="isChangePasswordOpen">
+    </div> -->
+
+    <!-- PROFILE CARD -->
+    <div class="settings-card">
+
+      <div class="profile">
+        <div class="avatar">{{ userName?.[0] }}</div>
+        <div class="info">
+          <div class="name">{{ userName }}</div>
+          <div class="email">{{ email }}</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <button
+        class="btn secondary"
+        routerLink="/app/settings/change-password">
+        🔐 Change Password
+      </button>
+
+      <button
+        class="btn danger"
+        (click)="logout()">
+        🚪 Logout
+      </button>
+
+    </div>
+
+    <!-- CHANGE PASSWORD (FOREGROUND) -->
+    <div class="settings-child">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
 
 </div>
