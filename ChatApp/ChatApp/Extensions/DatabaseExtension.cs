@@ -3,6 +3,7 @@ using ChatApp.Data;
 using ChatApp.Repositories;
 using ChatApp.Services;
 using Domain.Repositories.Interfaces;
+using Domain.Services;
 using Domain.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -30,8 +31,9 @@ namespace ChatApp.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IGroupRepository, GroupRepository>();
             services.AddScoped<IGroupService, GroupService>();
-
-
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuthRespsitory, AuthRepository>();
 
             return services;
         }
