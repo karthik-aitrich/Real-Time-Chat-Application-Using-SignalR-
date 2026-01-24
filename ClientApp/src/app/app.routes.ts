@@ -6,44 +6,52 @@ import { Register } from './auth/register/register';
 import { ChatWindow } from './chat/chat-window/chat-window';
 import { GroupChat } from './groups/group-chat/group-chat';
 import { GroupInfo } from './groups/group-info/group-info';
-import { Settings } from './settings/settings/settings';
 import { Empty } from './empty/empty/empty';
 
 export const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
-  // Auth
+  // AUTH
   { path: 'login', component: Login },
   { path: 'register', component: Register },
 
-  // App shell
   {
-    path: 'app',
-    component: MainLayout,
-    resolve: {
-    users: UsersResolver
+    path: 'verify-otp',
+    loadComponent: () =>
+      import('./auth/verify-otp/verify-otp')
+        .then(m => m.VerifyOtp)
   },
-    children: [
 
-      { path: '', component: Empty },
+  // APP SHELL
+ {
+  path: 'app',
+  component: MainLayout,
+  resolve: { users: UsersResolver },
+  children: [
 
-      { path: 'chat/:id', component: ChatWindow },
-      { path: 'group/:id', component: GroupChat },
-      { path: 'group-info/:id', component: GroupInfo },
+    // PROFILE
+    {
+      path: 'profile',
+      loadComponent: () =>
+        import('./profile/view-profile/view-profile')
+          .then(m => m.ViewProfile)
+    },
 
-      {
-        path: 'settings',
-        component: Settings,
-        children: [
-          {
-            path: 'change-password',
-            loadComponent: () =>
-              import('./settings/change-password/change-password')
-                .then(m => m.ChangePassword)
-          }
-        ]
-      }
-    ]
-  }
+    {
+      path: 'profile/change-password',
+      loadComponent: () =>
+        import('./profile/change-password/change-password')
+          .then(m => m.ChangePassword)
+    },
+
+    { path: 'chat/:id', component: ChatWindow },
+    { path: 'group/:id', component: GroupChat },
+    { path: 'group-info/:id', component: GroupInfo },
+
+    // EMPTY LAST
+    { path: '', component: Empty }
+  ]
+}
+
 ];
