@@ -144,16 +144,18 @@ namespace ChatApp.Controllers
             if (user == null)
                 return Unauthorized();
 
-            var currentHash = HashPassword(dto.CurrentPassword);
-
-            if (user.PasswordHash != currentHash)
+            if (user.PasswordHash != HashPassword(dto.CurrentPassword))
                 return BadRequest("Current password is incorrect");
+
+            if (user.PasswordHash == HashPassword(dto.NewPassword))
+                return BadRequest("New password must be different from current password");
 
             user.PasswordHash = HashPassword(dto.NewPassword);
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Password changed successfully" });
         }
+
 
 
         [HttpPost("forgot-password")]

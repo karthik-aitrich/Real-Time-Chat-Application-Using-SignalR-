@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Domain.Models;
 
 public class GroupMessage
 {
@@ -15,5 +16,7 @@ public class GroupMessage
     public string SenderName { get; set; }
     public string MessageText { get; set; } = null!;
     public DateTime SentAt { get; set; }
+
+    public ICollection<GroupMessageSeen> SeenBy { get; set; }
 }
 

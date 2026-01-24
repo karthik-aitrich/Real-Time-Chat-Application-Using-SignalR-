@@ -1,8 +1,10 @@
-﻿using Domain.DTOs;
+﻿using ChatApp.Repositories;
+using Domain.DTOs;
 using Domain.Enums;
 using Domain.Models;
 using Domain.Repositories.Interfaces;
 using Domain.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChatApp.Services
 {
@@ -85,5 +87,28 @@ namespace ChatApp.Services
 
             await _repo.AddMemberAsync(member);
         }
+
+        public async Task MarkGroupMessageSeenAsync(Guid messageId, Guid userId)
+        {
+            // 1️⃣ Check if already seen
+            var alreadySeen = await _repo
+                .HasUserSeenMessageAsync(messageId, userId);
+
+            if (alreadySeen)
+                return;
+
+            // 2️⃣ Add seen record
+            var seen = new GroupMessageSeen
+            {
+                Id = Guid.NewGuid(),
+                GroupMessageId = messageId,
+                UserId = userId,
+                SeenAt = DateTime.UtcNow
+            };
+
+            await _repo.AddMessageSeenAsync(seen);
+        }
+
+
     }
 }

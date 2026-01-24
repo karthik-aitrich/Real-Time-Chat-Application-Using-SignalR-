@@ -27,26 +27,34 @@ export class Register {
 
   register() {
 
-    // 🔴 EMPTY FIELD CHECK
-    if (!this.userName || !this.email || !this.password) {
-      this.errorMessage = 'All fields are required';
-      return;
-    }
-
-    this.errorMessage = '';
-
-    this.authService.register(this.userName, this.email, this.password)
-      .subscribe({
-        next: () => {
-          this.router.navigate(['/login']);
-        },
-        error: (err) => {
-          if (err.status === 400) {
-            this.errorMessage = 'User already exists or invalid data';
-          } else {
-            this.errorMessage = 'Registration failed. Try again.';
-          }
-        }
-      });
+  if (!this.userName || !this.email || !this.password) {
+    this.errorMessage = 'All fields are required';
+    return;
   }
+
+  this.errorMessage = '';
+
+  this.authService.register(this.userName, this.email, this.password)
+    .subscribe({
+      next: () => {
+
+        // ✅ Store data temporarily
+        this.authService.setPendingRegister({
+          userName: this.userName,
+          email: this.email,
+          password: this.password
+        });
+
+        // ✅ Go to OTP screen
+        this.router.navigate(['/verify-otp']);
+      },
+      error: (err) => {
+        this.errorMessage =
+          err.status === 400
+            ? 'User already exists or invalid data'
+            : 'Registration failed. Try again.';
+      }
+    });
+}
+
 }

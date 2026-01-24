@@ -11,7 +11,19 @@ export class AuthService {
  private baseUrl = 'http://localhost:5146/api/v1/auth';
 
 
+ private pendingRegisterData: {
+    userName: string;
+    email: string;
+    password: string;
+  } | null = null;
+
+
   constructor(private http: HttpClient) {}
+
+
+
+
+
 
 login(email: string, password: string) {
   return this.http
@@ -67,6 +79,38 @@ resetPassword(token: string, newPassword: string) {
   return this.http.post(
     `${this.baseUrl}/reset-password`,
     { token, newPassword }
+  );
+}
+
+
+// 🔹 STORE REGISTER DATA TEMPORARILY
+setPendingRegister(data: {
+  userName: string;
+  email: string;
+  password: string;
+}) {
+  this.pendingRegisterData = data;
+}
+
+// 🔹 READ REGISTER DATA
+getPendingRegister() {
+  return this.pendingRegisterData;
+}
+
+// 🔹 CLEAR AFTER OTP SUCCESS
+clearPendingRegister() {
+  this.pendingRegisterData = null;
+}
+
+verifyOtp(data: {
+  email: string;
+  otp: string;
+  userName: string;
+  password: string;
+}) {
+  return this.http.post(
+    `${this.baseUrl}/verify-otp`,
+    data
   );
 }
 

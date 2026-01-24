@@ -1,74 +1,149 @@
-.settings-page {
+.settings-body {
   flex: 1;
-  height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-
-  background: linear-gradient(135deg, #1e1b3a, #3a2a6a);
+  align-items: center;
+  gap: 32px;
 }
 
+/* Profile card */
 .settings-card {
-  width: 360px;
-  background: rgba(255,255,255,0.08);
+  width: 320px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.10),
+    rgba(255,255,255,0.05)
+  );
   backdrop-filter: blur(14px);
-  border-radius: 20px;
-  padding: 28px;
-  color: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* PROFILE */
+.settings-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+
+/* Child route */
+.settings-child {
+  width: 360px;
+}
+
+/* Profile */
 .profile {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #5f6cff, #ff6bdc);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: 700;
+  width: 52px;
+  height: 52px;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
 }
 
 .info .name {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 
 .info .email {
   font-size: 13px;
-  color: #cfd2ff;
+  opacity: 0.8;
 }
 
-hr {
-  border: none;
+.divider {
   height: 1px;
-  background: rgba(255,255,255,0.15);
-  margin: 20px 0;
+  background: rgba(255,255,255,0.12);
+  margin: 4px 0;
 }
 
-/* LOGOUT */
-.logout-btn {
-  width: 100%;
-  padding: 14px;
-  border-radius: 14px;
+
+.btn {
+  height: 44px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
-
-  background: linear-gradient(135deg, #ff4b4b, #ff7b7b);
-  color: #fff;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
-.logout-btn:hover {
+/* Change Password */
+.btn.secondary {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+}
+
+.btn.secondary:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Logout */
+.btn.danger {
+  background: linear-gradient(135deg, #ff5c5c, #ff7b7b);
+  color: #fff;
+}
+
+.btn.danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(255,92,92,0.45);
+}
+/* FULL SCREEN BLUR */
+/* .global-blur {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+} */
+
+/* Settings card should be blurred */
+.settings-card {
+  position: relative;
+  z-index: 10;
+}
+
+/* Change password must FLOAT above blur */
+.settings-child {
+  position: relative;
+  z-index: 30;
+}
+.settings-card {
   opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+:has(.change-password-panel) .settings-card {
+  opacity: 0.75;
+}
+.settings-child {
+  width: 360px;
+  display: flex;
+  justify-content: center;
 }

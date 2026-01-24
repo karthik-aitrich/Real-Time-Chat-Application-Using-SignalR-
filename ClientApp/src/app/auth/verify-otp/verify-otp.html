@@ -1,0 +1,27 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <h2>Verify OTP</h2>
+    <p class="subtitle">
+      OTP sent to <b>{{ email }}</b>
+    </p>
+
+    <p class="error-text" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </p>
+
+    <input
+      type="text"
+      placeholder="Enter OTP"
+      [(ngModel)]="otp"
+    />
+
+    <button
+      class="auth-btn"
+      (click)="verifyOtp()"
+      [disabled]="!otp">
+      Verify
+    </button>
+
+  </div>
+</div>
