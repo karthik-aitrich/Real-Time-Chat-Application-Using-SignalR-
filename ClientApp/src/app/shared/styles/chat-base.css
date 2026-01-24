@@ -318,3 +318,6 @@ hr {
 .logout-btn:hover {
   opacity: 0.9;
 }
+.seen {
+  color: #4fc3f7; /* WhatsApp blue */
+}

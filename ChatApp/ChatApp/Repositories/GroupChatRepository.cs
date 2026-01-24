@@ -32,6 +32,21 @@ namespace ChatApp.Repositories
         }
 
 
+        public async Task<bool> HasUserSeenMessageAsync(Guid messageId, Guid userId)
+        {
+            return await _context.GroupMessageSeens
+                .AnyAsync(x =>
+                    x.GroupMessageId == messageId &&
+                    x.UserId == userId
+                );
+        }
+
+        public async Task AddMessageSeenAsync(GroupMessageSeen seen)
+        {
+            _context.GroupMessageSeens.Add(seen);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<GroupMessage>> GetGroupMessagesAsync(Guid groupId)
         {
             return await _context.GroupMessages

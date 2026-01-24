@@ -35,46 +35,39 @@ export class GroupChat implements OnInit, AfterViewChecked {
     private router: Router, 
   ) {}
 
-  ngOnInit() {
-    const sender = localStorage.getItem('userId');
-    if (!sender) return;
-    this.senderId = sender;
+async ngOnInit() {
+  this.senderId = localStorage.getItem('userId')!;
+  if (!this.senderId) return;
 
-    this.route.paramMap.subscribe(params => {
-      const id = params.get('id');
+  // 🔥 Ensure SignalR connected
+  await this.chat.startConnection();
 
-      // 🔥 critical guard
-      if (!id || id === 'create') return;
+  // 🔥 Listen ONCE
+  this.chat.onGroupMessageReceived(msg => {
+    if (msg.groupId !== this.groupId) return;
 
-      this.groupId = id;
-      this.isLoading = true;
+    if (msg.id && this.messageIds.has(msg.id)) return;
+    if (msg.id) this.messageIds.add(msg.id);
 
-      const nav = history.state;
-      this.groupName = nav.groupName || 'Group Chat';
+    this.messages.push(msg);
+    this.shouldScroll = true;
+  });
 
-      this.chat.joinGroup(this.groupId);
-      this.loadGroupChat();
-    });
+  // 🔥 React to route change
+  this.route.paramMap.subscribe(async params => {
+    const id = params.get('id');
+    if (!id || id === 'create') return;
 
-    this.chat.onGroupMessageReceived(msg => {
-      if (msg.groupId !== this.groupId) return;
+    this.groupId = id;
+    this.isLoading = true;
 
-      if (msg.id && this.messageIds.has(msg.id)) return;
-      if (msg.id) this.messageIds.add(msg.id);
+    this.groupName = history.state?.groupName || 'Group Chat';
 
-      this.messages.push(msg);
-      this.shouldScroll = true;
-    });
-  }
-get membersCount(): number {
-  const uniqueMembers = new Set(
-    this.messages
-      .filter(m => m.senderId)
-      .map(m => m.senderId)
-  );
-
-  return uniqueMembers.size;
+    await this.chat.joinGroup(this.groupId); // 👈 SAFE NOW
+    this.loadGroupChat();
+  });
 }
+
 
   loadGroupChat() {
     this.chat.getGroupHistory(this.groupId).subscribe({
@@ -105,22 +98,18 @@ get membersCount(): number {
     }
   }
 
-  send() {
-    if (!this.message.trim()) return;
+ async send() {
+  if (!this.message.trim()) return;
 
-    const newMsg = {
-      senderId: this.senderId,
-      groupId: this.groupId,
-      messageText: this.message,
-      sentAt: new Date()
-    };
+  await this.chat.sendGroupMessage(
+    this.groupId,
+    this.senderId,
+    this.message
+  );
 
-    this.messages.push(newMsg);
-    this.shouldScroll = true;
+  this.message = '';
+}
 
-    this.chat.sendGroupMessage(this.groupId, this.senderId, this.message);
-    this.message = '';
-  }
 
   scrollToBottom() {
     if (this.chatBody) {
@@ -132,6 +121,18 @@ get membersCount(): number {
 openGroupInfo() {
   this.router.navigate(['/app/group-info', this.groupId]);
 }
+
+
+get membersCount(): number {
+  const uniqueMembers = new Set(
+    this.messages
+      .filter(m => m.senderId)
+      .map(m => m.senderId)
+  );
+
+  return uniqueMembers.size;
+}
+
 
 
 }

@@ -1,9 +1,29 @@
 <div class="sidebar">
 
-  <!-- LOGO -->
+  <!-- HEADER -->
   <div class="sidebar-header">
-    <img src="assets/logo.jpeg" class="logo-img" />
-    <span class="logo-text">Chatz</span>
+
+    <div class="brand">
+      <img src="assets/logo.jpeg" class="logo-img" />
+      <span class="logo-text">Chatz</span>
+    </div>
+
+    <!-- SETTINGS (TOP RIGHT) -->
+    <div class="settings-top">
+     <button class="settings-icon" (click)="toggleSettings()">⋮</button>
+
+
+      <!-- DROPDOWN -->
+     <div class="settings-dropdown" *ngIf="showSettings">
+  <div class="dropdown-item" (click)="goToProfile()">
+    <span>👤</span> View Profile
+  </div>
+  <div class="dropdown-item" (click)="goToChangePassword()">
+    <span>🔒</span> Change Password
+  </div>
+</div>
+    </div>
+
   </div>
 
   <!-- SEARCH -->
@@ -52,16 +72,8 @@
       </div>
     </div>
 
-    <!-- CREATE GROUP -->
     <button class="new-group-btn" (click)="createNewGroup()">
       + New Group
-    </button>
-  </div>
-
-  <!-- SETTINGS -->
-  <div class="sidebar-footer">
-    <button class="settings-btn" (click)="openSettings()">
-      ⚙ Settings
     </button>
   </div>
 

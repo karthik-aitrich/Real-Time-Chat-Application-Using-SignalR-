@@ -18,6 +18,16 @@
         <div class="text">{{ msg.messageText }}</div>
         <div class="meta">
           {{ msg.sentAt | date:'shortTime' }}
+          <div class="meta">
+  
+
+  <span *ngIf="msg.senderId === senderId">
+    <span *ngIf="msg.status === 'Sent'">✔</span>
+    <span *ngIf="msg.status === 'Delivered'">✔✔</span>
+    <span *ngIf="msg.status === 'Seen'" class="seen">✔✔</span>
+  </span>
+</div>
+
         </div>
       </div>
 
@@ -25,8 +35,15 @@
   </div>
 
   <div class="chat-input">
-    <input [(ngModel)]="message" placeholder="Type a message..." />
-    <button (click)="send()">➤</button>
+   <input
+  [(ngModel)]="message"
+  placeholder="Type a message..."
+  (keydown.enter)="$event.preventDefault(); send()"
+/>
+
+
+    <button type="button" (click)="send()">➤</button>
+
   </div>
 
 </div>

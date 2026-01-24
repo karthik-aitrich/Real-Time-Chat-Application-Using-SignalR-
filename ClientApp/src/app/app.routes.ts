@@ -1,51 +1,57 @@
 import { Routes } from '@angular/router';
+import { UsersResolver } from './resolvers/users.resolver';
 import { MainLayout } from './layout/main-layout/main-layout';
 import { Login } from './auth/login/login';
 import { Register } from './auth/register/register';
 import { ChatWindow } from './chat/chat-window/chat-window';
 import { GroupChat } from './groups/group-chat/group-chat';
 import { GroupInfo } from './groups/group-info/group-info';
-import { Settings } from './settings/settings/settings';
 import { Empty } from './empty/empty/empty';
 
 export const routes: Routes = [
 
-  // Default → Login
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
-  // Auth
+  // AUTH
   { path: 'login', component: Login },
   { path: 'register', component: Register },
 
-  // Main App (After Login)
   {
-    path: 'app',
-    component: MainLayout,
-    children: [
+    path: 'verify-otp',
+    loadComponent: () =>
+      import('./auth/verify-otp/verify-otp')
+        .then(m => m.VerifyOtp)
+  },
 
-      // default empty screen
-      { path: '', component: Empty },
+  // APP SHELL
+ {
+  path: 'app',
+  component: MainLayout,
+  resolve: { users: UsersResolver },
+  children: [
 
-      // ✅ CREATE GROUP — MUST COME FIRST
-      {
-        path: 'group/create',
-        loadComponent: () =>
-          import('./groups/create-group/create-group')
-            .then(m => m.CreateGroup)
-      },
+    // PROFILE
+    {
+      path: 'profile',
+      loadComponent: () =>
+        import('./profile/view-profile/view-profile')
+          .then(m => m.ViewProfile)
+    },
 
-      // user chat
-      { path: 'chat/:id', component: ChatWindow, runGuardsAndResolvers: 'always' },
+    {
+      path: 'profile/change-password',
+      loadComponent: () =>
+        import('./profile/change-password/change-password')
+          .then(m => m.ChangePassword)
+    },
 
-      // group chat
-      { path: 'group/:id', component: GroupChat },
+    { path: 'chat/:id', component: ChatWindow },
+    { path: 'group/:id', component: GroupChat },
+    { path: 'group-info/:id', component: GroupInfo },
 
-      // group info
-      { path: 'group-info/:id', component: GroupInfo },
+    // EMPTY LAST
+    { path: '', component: Empty }
+  ]
+}
 
-      // settings
-      { path: 'settings', component: Settings },
-      
-    ]
-  }
 ];

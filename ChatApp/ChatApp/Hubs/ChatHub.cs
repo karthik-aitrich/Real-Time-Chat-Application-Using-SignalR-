@@ -69,6 +69,21 @@ namespace ChatApp.Hubs
             await Groups.AddToGroupAsync(Context.ConnectionId, groupId.ToString());
         }
 
+        public async Task GroupMessageSeen(Guid messageId, Guid groupId)
+        {
+            var userId = GetUserId();
+            if (userId == Guid.Empty) return;
+
+            await _groupChatService.MarkGroupMessageSeenAsync(messageId, userId);
+
+            await Clients.Group(groupId.ToString())
+                .SendAsync("GroupMessageSeen", new
+                {
+                    MessageId = messageId,
+                    UserId = userId
+                });
+        }
+
         public async Task LeaveGroup(Guid groupId)
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupId.ToString());
