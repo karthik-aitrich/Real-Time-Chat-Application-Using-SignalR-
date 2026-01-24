@@ -15,6 +15,8 @@ export class Sidebar implements OnInit {
   users: any[] = [];
   groups: any[] = [];
   activeTab: 'chats' | 'groups' = 'chats';
+  
+showSettings = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,10 +37,25 @@ ngOnInit(): void {
   console.log(this.route.snapshot.data);
 
 
+  
+
   this.groupService.getMyGroups().subscribe(groups => {
     this.groups = groups;
   });
 }
+
+
+toggleSettings() {
+  this.showSettings = !this.showSettings;
+}
+
+goToProfile() {
+  this.showSettings = false;
+  this.router.navigate(['/app/profile']);
+}
+
+
+
 
 
   openChat(user: any) {
@@ -66,4 +83,9 @@ ngOnInit(): void {
   trackUser(_: number, user: any) {
     return user.userId;
   }
+
+  goToChangePassword() {
+  this.showSettings = false;
+  this.router.navigate(['/app/profile/change-password']);
+}
 }

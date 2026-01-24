@@ -1,0 +1,16 @@
+<div class="profile-page">
+  <h2>My Profile</h2>
+
+  <div
+    class="profile-card"
+    [attr.data-initial]="userName?.charAt(0)">
+
+    <p><b>Username:</b> {{ userName }}</p>
+    <p><b>Email:</b> {{ email }}</p>
+
+    <!-- LOGOUT -->
+    <button class="logout-btn" (click)="logout()">
+      🚪 Logout
+    </button>
+  </div>
+</div>

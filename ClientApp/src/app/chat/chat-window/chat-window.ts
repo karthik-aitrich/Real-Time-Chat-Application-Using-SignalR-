@@ -46,44 +46,50 @@ export class ChatWindow
   // ===============================
   // INIT
   // ===============================
-  ngOnInit() {
-    this.senderId = localStorage.getItem('userId')!;
-    if (!this.senderId) return;
+ async ngOnInit() {
+  this.senderId = localStorage.getItem('userId')!;
+  if (!this.senderId) return;
 
-    // 🔥 REGISTER SIGNALR LISTENER ONCE
-    this.chat.onMessageReceived(msg => {
-      if (
-        (msg.senderId === this.receiverId &&
-         msg.receiverId === this.senderId) ||
-        (msg.senderId === this.senderId &&
-         msg.receiverId === this.receiverId)
-      ) {
-        this.messages.push(msg);
-        this.shouldScroll = true;
-      }
-    });
+  // ✅ ENSURE SIGNALR READY
+  await this.chat.startConnection();
 
-    // 🔥 REACT TO ROUTE CHANGE
-    this.routeSub = this.route.paramMap.subscribe(params => {
-      const id = params.get('id');
-      if (!id) return;
+  // ✅ REGISTER LISTENER ONCE
+  this.chat.onMessageReceived(msg => {
+    if (
+      (msg.senderId === this.receiverId &&
+       msg.receiverId === this.senderId) ||
+      (msg.senderId === this.senderId &&
+       msg.receiverId === this.receiverId)
+    ) {
+      this.messages.push(msg);
+      this.shouldScroll = true;
+    }
+  });
 
-      this.receiverId = id;
+  // ✅ ROUTE CHANGE
+  this.routeSub = this.route.paramMap.subscribe(params => {
+    const id = params.get('id');
+    if (!id) return;
 
-      // ✅ GET USER NAME FROM RESOLVER (NO history.state)
-      const users =
-        this.route.snapshot.parent?.data['users'] ?? [];
+    this.receiverId = id;
+    this.isLoading = true;
 
+    const parent = this.route.snapshot.parent;
+    const users = parent?.data?.['users'];
+
+    if (Array.isArray(users)) {
       const user = users.find(
         (u: any) => u.userId === this.receiverId
       );
-
       this.selectedName = user?.userName ?? 'Chat';
+    } else {
+      this.selectedName = 'Chat';
+    }
 
-      this.messages = [];
-      this.loadChat();
-    });
-  }
+    this.messages = [];
+    this.loadChat();
+  });
+}
 
   // ===============================
   // LOAD CHAT HISTORY
