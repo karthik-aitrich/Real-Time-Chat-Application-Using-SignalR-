@@ -15,42 +15,35 @@ namespace ChatApp.Controllers
     public class AuthController : BaseAPIController<AuthController>
     {
 
-
-        private readonly ChatDbContext _context;
+		private readonly IWebHostEnvironment _env;
+		private readonly ChatDbContext _context;
         private readonly JwtService _jwtService;
         private readonly IUserService _userService;
         private readonly IEmailService _emailService;
         private readonly IAuthService _authService;
-        public AuthController(ChatDbContext context, JwtService jwtService, IUserService userService,IEmailService emailService,IAuthService authService)    
+        public AuthController(IWebHostEnvironment env,ChatDbContext context, JwtService jwtService, IUserService userService,IEmailService emailService,IAuthService authService)    
         {
             _context = context;
             _jwtService = jwtService;
             _userService = userService;
             _emailService=emailService;
             _authService = authService;
+            _env = env;
 
         }
 
         // POST: api/v1/auth/register
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromForm]RegisterDto dto)
+        public async Task<IActionResult> Register(RegisterDto dto)
         {
             var exists = await _context.Users.AnyAsync(u => u.Email == dto.Email);
             if (exists)
                 return BadRequest("Email already exists");
-			var photoUrl = await SaveProfilePhoto(dto.ProfilePhoto);
-			var user = new User
-            {
-                UserId = Guid.NewGuid(),
-                UserName = dto.UserName,
-                Email = dto.Email,
-                PasswordHash = HashPassword(dto.Password),
-                IsOnline = false,
-                LastSeen = DateTime.Now
-            };
+		
+           
 
       
-            await _emailService.SendEmailAsync(user.Email);
+            await _emailService.SendEmailAsync(dto.Email);
             //return Ok("Registration successful");
             return Ok();
 
@@ -62,36 +55,58 @@ namespace ChatApp.Controllers
 				throw new Exception("Invalid image type");
 
 			var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-			var folderPath = Path.Combine("wwwroot", "uploads", "profile");
+
+			var folderPath = Path.Combine(_env.WebRootPath, "uploads", "profile");
 			Directory.CreateDirectory(folderPath);
 
 			var filePath = Path.Combine(folderPath, fileName);
 
-			using var stream = new FileStream(filePath, FileMode.Create);
-			await file.CopyToAsync(stream);
+			try
+			{
+				using var stream = new FileStream(filePath, FileMode.Create);
+				await file.CopyToAsync(stream);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"File save failed: {ex.Message}");
+			}
 
 			return $"/uploads/profile/{fileName}";
 		}
 		[HttpPost("verify-otp")]
-		public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpDto dto)
+		public async Task<IActionResult> VerifyOtp([FromForm] VerifyOtpDto dto)
         {
 			bool isValid = await _authService.verifyOtp(dto.Email, dto.Otp);
+
 			if (!isValid)
 				return BadRequest(new { message = "Invalid or expired OTP" });
+		
+			return Ok(new { message = "OTP verified. Account created successfully." });
+		}
+		[HttpPost("confirm")]
+        public async Task<IActionResult> confirmAccount([FromForm]ConfirmDTo dto)
+        {
+			var photoUrl = await SaveProfilePhoto(dto.ProfilePhoto);
 			var user = new User
 			{
 				UserId = Guid.NewGuid(),
 				UserName = dto.UserName,
 				Email = dto.Email,
-				PasswordHash = HashPassword(dto.Password),
-				IsOnline = false,
-				LastSeen = DateTime.Now
+                IsOnline=false,
+				LastSeen = DateTime.Now,
+				ProfilePhoto = photoUrl,
+PasswordHash = HashPassword(dto.Password)
 			};
+
 			_context.Users.Add(user);
 			await _context.SaveChangesAsync();
 			// ✅ OTP verified – create account here
-			return Ok(new { message = "OTP verified. Account created successfully." });
+			return Ok(new { message = " Account created successfully." });
+
+
 		}
+
+
 
 		[Authorize]
         [HttpPost("logout")]
