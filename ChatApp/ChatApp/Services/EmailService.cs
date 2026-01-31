@@ -70,5 +70,54 @@ namespace ChatApp.Services
 				throw ex;
 			}
 		}
-	}
+
+        public async Task SendResetPasswordEmailAsync(string email, string resetLink)
+        {
+            var settings = _config.GetSection("MailSettings");
+
+            var msg = new MimeMessage();
+            msg.From.Add(MailboxAddress.Parse(settings["From"]));
+            msg.To.Add(MailboxAddress.Parse(email));
+            msg.Subject = "Reset your password";
+
+            msg.Body = new BodyBuilder
+            {
+                HtmlBody = $@"
+            <h3>Password Reset</h3>
+            <p>You requested to reset your password.</p>
+            <p>Click the button below to reset it:</p>
+
+            <a href='{resetLink}'
+               style='padding:10px 20px;
+                      background:#6c63ff;
+                      color:white;
+                      text-decoration:none;
+                      border-radius:5px'>
+                Reset Password
+            </a>
+
+            <p>This link expires in 15 minutes.</p>
+            <br/>
+            <p>If you didn’t request this, ignore this email.</p>
+        "
+            }.ToMessageBody();
+
+            using var smtp = new SmtpClient();
+
+            await smtp.ConnectAsync(
+                settings["Host"],
+                int.Parse(settings["Port"]),
+                MailKit.Security.SecureSocketOptions.StartTls
+            );
+
+            await smtp.AuthenticateAsync(
+                settings["Username"],
+                settings["Password"]
+            );
+
+            await smtp.SendAsync(msg);
+            await smtp.DisconnectAsync(true);
+        }
+
+    }
 }

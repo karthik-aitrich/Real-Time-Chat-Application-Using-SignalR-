@@ -1,89 +1,111 @@
-import { Component,OnInit,ViewChild,ElementRef,AfterViewChecked} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+  ChangeDetectorRef,
+  NgZone
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute ,Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ChatService } from '../../../services/chat.service';
-
+import { GroupService } from '../../../services/group.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './group-chat.html',
-    styleUrls: [
-    
-    '../../shared/styles/chat-base.css'
-  ]
+  styleUrls: ['../../shared/styles/chat-base.css']
 })
-export class GroupChat implements OnInit, AfterViewChecked {
+export class GroupChat implements OnInit, OnDestroy {
 
   messages: any[] = [];
+  members: any[] = [];
+
   groupId!: string;
   senderId!: string;
+  groupName = 'Group Chat';
 
   message = '';
   isLoading = false;
-  groupName = 'Group Chat';
 
-  private shouldScroll = false;
-  private messageIds = new Set<string>();
+  private routeSub!: Subscription;
+  private signalRReady = false;
 
   @ViewChild('chatBody') chatBody!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
     private chat: ChatService,
-    private router: Router, 
+    private groupService: GroupService,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
   ) {}
 
-async ngOnInit() {
-  this.senderId = localStorage.getItem('userId')!;
-  if (!this.senderId) return;
+  async ngOnInit() {
+    this.senderId = localStorage.getItem('userId')!;
+    if (!this.senderId) return;
 
-  // 🔥 Ensure SignalR connected
-  await this.chat.startConnection();
+    // 1️⃣ Start SignalR once
+    await this.chat.startConnection();
+    this.signalRReady = true;
 
-  // 🔥 Listen ONCE
-  this.chat.onGroupMessageReceived(msg => {
-    if (msg.groupId !== this.groupId) return;
+    // 2️⃣ Register group message listener ONCE
+    this.chat.onGroupMessageReceived(msg => {
+      this.zone.run(() => {
+        if (msg.groupId.toString() !== this.groupId) return;
 
-    if (msg.id && this.messageIds.has(msg.id)) return;
-    if (msg.id) this.messageIds.add(msg.id);
+        this.messages = [...this.messages, msg];
+        this.cdr.detectChanges();
+        this.scrollToBottom();
+      });
+    });
 
-    this.messages.push(msg);
-    this.shouldScroll = true;
-  });
+    // 3️⃣ Handle group route changes
+    this.routeSub = this.route.paramMap.subscribe(async params => {
+      const id = params.get('id');
+      if (!id || id === 'create') return;
 
-  // 🔥 React to route change
-  this.route.paramMap.subscribe(async params => {
-    const id = params.get('id');
-    if (!id || id === 'create') return;
+      // Leave old group
+      if (this.groupId) {
+        await this.chat.leaveGroup(this.groupId);
+      }
 
-    this.groupId = id;
-    this.isLoading = true;
+      this.groupId = id;
+      this.groupName = history.state?.groupName ?? 'Group Chat';
 
-    this.groupName = history.state?.groupName || 'Group Chat';
+      this.messages = [];
+      this.members = [];
+      this.isLoading = true;
 
-    await this.chat.joinGroup(this.groupId); // 👈 SAFE NOW
-    this.loadGroupChat();
-  });
-}
+      // Join group
+      await this.chat.joinGroup(this.groupId);
 
+      // Load data
+      this.loadGroupChat();
+      this.loadMembers();
+    });
+  }
 
+  
   loadGroupChat() {
+    if (!this.signalRReady) return;
+
     this.chat.getGroupHistory(this.groupId).subscribe({
-      next: m => {
-        this.messages = m.sort(
+      next: msgs => {
+        this.messages = [...msgs].sort(
           (a, b) =>
-            new Date(a.sentAt).getTime() - new Date(b.sentAt).getTime()
+            new Date(a.sentAt).getTime() -
+            new Date(b.sentAt).getTime()
         );
 
-        this.messageIds.clear();
-        this.messages.forEach(msg => {
-          if (msg.id) this.messageIds.add(msg.id);
-        });
-
         this.isLoading = false;
-        this.shouldScroll = true;
+        this.cdr.detectChanges();
+        this.scrollToBottom();
       },
       error: () => {
         this.isLoading = false;
@@ -91,49 +113,60 @@ async ngOnInit() {
     });
   }
 
-  ngAfterViewChecked() {
-    if (this.shouldScroll) {
-      this.scrollToBottom();
-      this.shouldScroll = false;
-    }
+
+
+  loadMembers() {
+    this.groupService.getGroupMembers(this.groupId).subscribe({
+      next: members => {
+        this.members = members;
+        this.cdr.detectChanges();
+      },
+      error: err => {
+        console.error('LOAD MEMBERS ERROR', err);
+      }
+    });
   }
 
- async send() {
-  if (!this.message.trim()) return;
+  async send() {
+    if (!this.message.trim()) return;
+    if (!this.signalRReady) return;
 
-  await this.chat.sendGroupMessage(
-    this.groupId,
-    this.senderId,
-    this.message
-  );
+    const text = this.message;
+    this.message = '';
+    this.cdr.detectChanges();
 
-  this.message = '';
-}
-
-
-  scrollToBottom() {
-    if (this.chatBody) {
-      this.chatBody.nativeElement.scrollTop =
-        this.chatBody.nativeElement.scrollHeight;
-    }
+    await this.chat.sendGroupMessage(this.groupId, text);
   }
 
-openGroupInfo() {
-  this.router.navigate(['/app/group-info', this.groupId]);
+
+
+
+
+  private scrollToBottom() {
+    setTimeout(() => {
+      if (this.chatBody?.nativeElement) {
+        this.chatBody.nativeElement.scrollTo({
+          top: this.chatBody.nativeElement.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }, 0);
+  }
+
+  openGroupInfo() {
+    this.router.navigate(['/app/group-info', this.groupId]);
+  }
+
+  get membersCount(): number {
+    return this.members.length;
+  }
+
+  
+  ngOnDestroy() {
+    this.routeSub?.unsubscribe();
+
+    if (this.groupId) {
+      this.chat.leaveGroup(this.groupId);
+    }
+  }
 }
-
-
-get membersCount(): number {
-  const uniqueMembers = new Set(
-    this.messages
-      .filter(m => m.senderId)
-      .map(m => m.senderId)
-  );
-
-  return uniqueMembers.size;
-}
-
-
-
-}
-

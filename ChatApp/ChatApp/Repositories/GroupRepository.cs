@@ -54,9 +54,19 @@ namespace ChatApp.Repositories
                 .ToListAsync();
         }
 
-        public async Task AddMemberAsync(Guid groupId, Guid userId, GroupRoleEnum role)
+        public async Task AddMemberAsync(Guid groupId, Guid userId, Guid adminId)
         {
-            if (await _db.GroupMembers.AnyAsync(m => m.GroupId == groupId && m.UserId == userId))
+            var isAdmin = await _db.GroupMembers.AnyAsync(m =>
+                m.GroupId == groupId &&
+                m.UserId == adminId &&
+                m.Role == GroupRoleEnum.Admin
+            );
+
+            if (!isAdmin)
+                throw new Exception("Only admins can add members");
+
+            if (await _db.GroupMembers.AnyAsync(m =>
+                m.GroupId == groupId && m.UserId == userId))
                 throw new Exception("User already in group");
 
             _db.GroupMembers.Add(new GroupMember
@@ -64,12 +74,13 @@ namespace ChatApp.Repositories
                 GroupMemberId = Guid.NewGuid(),
                 GroupId = groupId,
                 UserId = userId,
-                Role = role,
+                Role = GroupRoleEnum.Member,
                 JoinedAt = DateTime.UtcNow
             });
 
             await _db.SaveChangesAsync();
         }
+
 
         public async Task RemoveMemberAsync(Guid groupId, Guid userId, Guid adminId)
         {

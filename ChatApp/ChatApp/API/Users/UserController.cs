@@ -1,4 +1,5 @@
-﻿using Domain.Services.Interfaces;
+﻿using System.Security.Claims;
+using Domain.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,12 +23,20 @@ namespace ChatApp.Controllers
             return Ok(users);
         }
 
-		[HttpGet("view-profile")]
-		public async Task<IActionResult> viewprofile(Guid id)
-		{
-			var users = await _userService.GetAllUsersAsync();
-			return Ok(users);
-		}
 
-	}
+        [Authorize]
+        [HttpGet("users/me")]
+        public async Task<IActionResult> GetMyProfile()
+        {
+            var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+            var user = await _userService.GetMyProfileAsync(userId);
+
+            if (user == null) return NotFound();
+
+            return Ok(user); // ✅ return DTO directly
+        }
+
+
+
+    }
 }

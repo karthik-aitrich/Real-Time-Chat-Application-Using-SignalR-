@@ -1,4 +1,5 @@
 ﻿using ChatApp.Data;
+using Domain.DTOs;
 using Domain.Models;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -23,15 +24,40 @@ namespace ChatApp.Repositories
                     UserName = u.UserName,
                     Email = u.Email,
                     IsOnline = u.IsOnline,
-                    LastSeen = u.LastSeen
+                    LastSeen = u.LastSeen,
+                    ProfilePhoto = u.ProfilePhoto   // ✅ ADD THIS
                 })
                 .ToListAsync();
         }
 
-        public async Task<User?> GetUserByIdAsync(Guid userId)
+        public async Task<UserBasicDto?> GetUserBasicAsync(Guid userId)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+            return await _context.Users
+                .Where(u => u.UserId == userId)
+                .Select(u => new UserBasicDto
+                {
+                    UserId = u.UserId,
+                    UserName = u.UserName
+                })
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
         }
+
+
+        public async Task<UserProfileDto?> GetUserByIdAsync(Guid id)
+        {
+            return await _context.Users
+                .Where(u => u.UserId == id)
+                .Select(u => new UserProfileDto
+                {
+                    UserId = u.UserId,
+                    UserName = u.UserName,
+                    Email = u.Email,
+                    ProfilePhoto = u.ProfilePhoto
+                })
+                .FirstOrDefaultAsync();
+        }
+
 
         public async Task UpdateUserStatusAsync(Guid userId, bool isOnline)
         {
@@ -44,6 +70,24 @@ namespace ChatApp.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<UserProfileDto?> GetMyProfileAsync(Guid userId)
+        {
+            return await _context.Users
+                .Where(u => u.UserId == userId)
+                .Select(u => new UserProfileDto
+                {
+                    UserId = u.UserId,          // ✅ ADD THIS
+                    UserName = u.UserName,
+                    Email = u.Email,
+                    ProfilePhoto = string.IsNullOrWhiteSpace(u.ProfilePhoto)
+    ? null
+    : u.ProfilePhoto
+
+                })
+                .FirstOrDefaultAsync();
+        }
+
 
         public async Task SetUserOfflineAsync(Guid userId)
         {

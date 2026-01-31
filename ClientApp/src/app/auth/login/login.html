@@ -35,12 +35,20 @@
   [disabled]="!email || !password">
   Login
 </button>
+  
+<div class="footer-text footer-actions">
+  <span>
+    Don’t have an account?
+    <a routerLink="/register">Create one</a>
+  </span>
+
+  <a class="forgot-link" routerLink="/forgot-password">
+    Forgot password?
+  </a>
+</div>
 
 
-    <p class="footer-text">
-      Don’t have an account?
-      <a routerLink="/register">Create one</a>
-    </p>
+
 
   </div>
 

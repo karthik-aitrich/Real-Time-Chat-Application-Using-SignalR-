@@ -56,6 +56,15 @@ logout() {
   return this.http.post(`${this.baseUrl}/logout`, {});
 }
 
+setAuthSession(res: any) {
+  localStorage.setItem('token', res.token);
+  localStorage.setItem('user', JSON.stringify(res.user));
+}
+
+isLoggedIn(): boolean {
+  return !!localStorage.getItem('token');
+}
+
 
 changePassword(data: {
   currentPassword: string;
@@ -78,9 +87,13 @@ forgotPassword(email: string) {
 resetPassword(token: string, newPassword: string) {
   return this.http.post(
     `${this.baseUrl}/reset-password`,
-    { token, newPassword }
+    {
+      Token: token,
+      NewPassword: newPassword
+    }
   );
 }
+
 
 
 // 🔹 STORE REGISTER DATA TEMPORARILY
@@ -97,22 +110,24 @@ getPendingRegister() {
   return this.pendingRegisterData;
 }
 
+// getMyProfile() {
+//   return this.http.get<any>('http://localhost:5146/api/v1/auth/profile');
+// }
+
+
+
 // 🔹 CLEAR AFTER OTP SUCCESS
 clearPendingRegister() {
   this.pendingRegisterData = null;
 }
 
-verifyOtp(data: {
-  email: string;
-  otp: string;
-  userName: string;
-  password: string;
-}) {
+verifyOtp(formData: FormData) {
   return this.http.post(
-    `${this.baseUrl}/verify-otp`,
-    data
+    'http://localhost:5146/api/v1/auth/verify-otp',
+    formData
   );
 }
+
 
 
 }

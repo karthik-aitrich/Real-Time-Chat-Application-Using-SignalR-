@@ -10,6 +10,7 @@ namespace Domain.Services.Interfaces
 	public interface IEmailService
 	{
 		Task SendEmailAsync(string Email);
-		
-	}
+        Task SendResetPasswordEmailAsync(string email, string resetLink);
+
+    }
 }

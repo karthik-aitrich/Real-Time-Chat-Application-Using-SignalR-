@@ -66,16 +66,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
 
 app.UseCors("AllowAngular");   // 👈 IMPORTANT
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapHub<ChatHub>("/chatHub");
-app.UseStaticFiles();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chatHub");
 
-app.MapFallbackToFile("index.html");
+//app.MapFallbackToFile("index.html");
 
 app.Run();

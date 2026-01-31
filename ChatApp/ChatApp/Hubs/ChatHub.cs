@@ -1,4 +1,7 @@
-﻿using ChatApp.Services;
+﻿using System.Security.Claims;
+using ChatApp.Services;
+using ChatApp.SignalR;
+using Domain.DTOs;
 using Domain.Enums;
 using Domain.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -22,16 +25,18 @@ namespace ChatApp.Hubs
 
 
 
-        public async Task SendGroupMessage(Guid groupId, Guid senderId, string message)
+        public async Task SendGroupMessage(Guid groupId, string message)
         {
-            // 🔥 Let SERVICE handle everything
+            var senderId = GetUserId();
+            if (senderId == Guid.Empty)
+                throw new HubException("Invalid user");
+
             var dto = await _groupChatService.SendGroupMessageAsync(
                 groupId,
                 senderId,
                 message
             );
 
-            // 🔥 Broadcast SAME DTO to group
             await Clients.Group(groupId.ToString())
                 .SendAsync("ReceiveGroupMessage", dto);
         }
@@ -41,25 +46,44 @@ namespace ChatApp.Hubs
 
         public async Task SendMessage(Guid senderId, Guid receiverId, string message)
         {
-            // 1️⃣ Save message & get it back
-            var savedMessage = await _chatService.SendMessageAsync(
-                senderId,
-                receiverId,
-                message
-            );
+            var savedMessage =
+                await _chatService.SendMessageAsync(senderId, receiverId, message);
 
-            // 2️⃣ Send to receiver
-            await Clients.User(receiverId.ToString())
-                .SendAsync("ReceiveMessage", savedMessage);
+            // 🔥 lightweight, safe, clean
+            var sender = await _userService.GetUserBasicAsync(senderId);
 
-            // 3️⃣ Send to sender (IMPORTANT)
+            var realtimeDto = new RealtimeChatMessageDto
+            {
+                MessageId = savedMessage.MessageId,
+                SenderId = savedMessage.SenderId,
+                ReceiverId = savedMessage.ReceiverId,
+                SenderName = sender?.UserName ?? "Unknown",
+                MessageText = savedMessage.MessageText,
+                SentAt = savedMessage.SentAt
+            };
+
+            // Sender always gets it
             await Clients.User(senderId.ToString())
-                .SendAsync("ReceiveMessage", savedMessage);
+                .SendAsync("ReceiveMessage", realtimeDto);
 
-            // 4️⃣ Mark as delivered
-            savedMessage.Status = MessageStatusEnum.Delivered;
-            await _chatService.MarkAsDelivered(savedMessage.MessageId);
+            // Receiver only if online
+            if (UserConnectionManager.IsOnline(receiverId))
+            {
+                await Clients.User(receiverId.ToString())
+                    .SendAsync("ReceiveMessage", realtimeDto);
+
+                await _chatService.MarkAsDelivered(savedMessage.MessageId);
+
+                await Clients.User(senderId.ToString())
+                    .SendAsync("MessageStatusUpdated", new
+                    {
+                        messageId = savedMessage.MessageId,
+                        status = "Delivered"
+                    });
+            }
         }
+
+
 
 
 
@@ -91,16 +115,28 @@ namespace ChatApp.Hubs
 
         private Guid GetUserId()
         {
-            var userIdClaim = Context.User?.FindFirst("userId")?.Value;
-            return Guid.TryParse(userIdClaim, out var id) ? id : Guid.Empty;
+            var claim = Context.User?
+                .FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            return Guid.TryParse(claim, out var id)
+                ? id
+                : Guid.Empty;
         }
 
 
         public override async Task OnConnectedAsync()
         {
             var userId = GetUserId();
+
             if (userId != Guid.Empty)
             {
+                UserConnectionManager.Add(userId, Context.ConnectionId);
+                // 🔥 STEP 2: send existing online users to the newly connected client
+                var onlineUsers = UserConnectionManager.GetOnlineUsers();
+
+                await Clients.Caller.SendAsync("OnlineUsers", onlineUsers);
+
+
                 await _userService.SetUserOnlineAsync(userId);
 
                 await Clients.All.SendAsync("UserStatusChanged", new
@@ -113,22 +149,33 @@ namespace ChatApp.Hubs
             await base.OnConnectedAsync();
         }
 
+
+
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             var userId = GetUserId();
+
             if (userId != Guid.Empty)
             {
-                await _userService.SetUserOfflineAsync(userId);
+                UserConnectionManager.Remove(userId, Context.ConnectionId);
 
-                await Clients.All.SendAsync("UserStatusChanged", new
+                // ✅ ONLY mark offline if NO connections remain
+                if (!UserConnectionManager.IsOnline(userId))
                 {
-                    UserId = userId,
-                    IsOnline = false
-                });
+                    await _userService.SetUserOfflineAsync(userId);
+
+                    await Clients.All.SendAsync("UserStatusChanged", new
+                    {
+                        UserId = userId,
+                        IsOnline = false
+                    });
+                }
             }
 
             await base.OnDisconnectedAsync(exception);
         }
+
+
 
 
         public async Task MessageSeen(Guid messageId, Guid senderId)
@@ -136,8 +183,14 @@ namespace ChatApp.Hubs
             await _chatService.MarkAsSeen(messageId);
 
             await Clients.User(senderId.ToString())
-                .SendAsync("MessageSeen", messageId);
+                .SendAsync("MessageSeen", new
+                {
+                    messageId = messageId,
+                    status = "Read"
+                });
         }
+
+
 
         public async Task UserTyping(Guid senderId, Guid receiverId)
         {

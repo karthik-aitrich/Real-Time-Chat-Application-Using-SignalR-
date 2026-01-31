@@ -59,7 +59,7 @@ export class ChangePassword {
 
         // redirect back to profile after short delay
         setTimeout(() => {
-          this.router.navigate(['/app/settings']);
+          this.router.navigate(['/app']);
         }, 1200);
       },
       error: (err) => {
@@ -75,7 +75,7 @@ export class ChangePassword {
   }
 
   goBack() {
-    this.router.navigate(['/app/settings']);
+    this.router.navigate(['/app']);
   }
 
   goToForgot() {

@@ -51,7 +51,30 @@
       class="list-item"
       *ngFor="let user of users"
       (click)="openChat(user)">
-      <div class="avatar">{{ user.userName[0] }}</div>
+       <div class="avatar-wrapper">
+
+  <!-- IMAGE AVATAR -->
+  <img
+    *ngIf="user.profilePhoto; else initials"
+    class="avatar-img"
+    [src]="'http://localhost:5146' + user.profilePhoto"
+  />
+
+  <!-- LETTER FALLBACK -->
+  <ng-template #initials>
+    <div class="avatar">
+      {{ user.userName.charAt(0) }}
+    </div>
+  </ng-template>
+
+  <!-- ONLINE DOT -->
+  <span
+    class="status-dot"
+    [class.online]="user.isOnline">
+  </span>
+
+</div>
+
       <div class="info">
         <div class="name">{{ user.userName }}</div>
         <div class="sub">Tap to chat</div>

@@ -19,11 +19,13 @@ namespace ChatApp.Repositories
         {
             var entity = new GroupMessage
             {
+                GroupMessageId = Guid.NewGuid(),   // 🔥 REQUIRED
                 GroupId = groupId,
                 SenderId = senderId,
                 MessageText = message,
                 SentAt = DateTime.UtcNow
             };
+
 
             _context.GroupMessages.Add(entity);
             await _context.SaveChangesAsync();

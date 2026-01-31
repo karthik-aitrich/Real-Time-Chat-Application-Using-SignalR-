@@ -1,4 +1,6 @@
-﻿using Domain.Models;
+﻿using ChatApp.Repositories;
+using Domain.DTOs;
+using Domain.Models;
 using Domain.Repositories.Interfaces;
 using Domain.Services.Interfaces;
 
@@ -13,9 +15,17 @@ namespace ChatApp.Services
             _userRepo = userRepo;
         }
 
+        public async Task<UserBasicDto?> GetUserBasicAsync(Guid userId)
+        {
+            return await _userRepo.GetUserBasicAsync(userId);
+        }
         public async Task<List<User>> GetAllUsersAsync()
         {
             return await _userRepo.GetAllUsersAsync();
+        }
+        public async Task<UserProfileDto?> GetMyProfileAsync(Guid userId)
+        {
+            return await _userRepo.GetMyProfileAsync(userId);
         }
 
         public async Task SetUserOnlineAsync(Guid userId)

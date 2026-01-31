@@ -37,20 +37,24 @@ export class VerifyOtp {
   }
 
   verifyOtp() {
+  const formData = new FormData();
+  formData.append('Email', this.email);
+  formData.append('Otp', this.otp.trim());
 
-    this.authService.verifyOtp({
-      email: this.email,
-      otp: this.otp,
-      userName: this.userName,
-      password: this.password
-    }).subscribe({
-      next: () => {
-        this.authService.clearPendingRegister();
-        this.router.navigate(['/login']);
-      },
-      error: () => {
-        this.errorMessage = 'Invalid or expired OTP';
-      }
-    });
-  }
+  this.authService.verifyOtp(formData).subscribe({
+    next: (res: any) => {
+
+      // 🔐 Save auth info (token / user) ONCE
+      this.authService.setAuthSession(res);
+
+      // ✅ Go DIRECTLY to chat screen
+      this.router.navigate(['/chat'], { replaceUrl: true });
+    },
+    error: () => {
+      this.errorMessage = 'Invalid or expired OTP';
+    }
+  });
+}
+
+
 }
