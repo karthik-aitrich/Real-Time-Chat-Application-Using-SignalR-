@@ -1,0 +1,15 @@
+.footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-actions .forgot-link {
+  color: #ff6bdc;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-actions .forgot-link:hover {
+  text-decoration: underline;
+}

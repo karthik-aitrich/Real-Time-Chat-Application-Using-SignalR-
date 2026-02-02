@@ -13,7 +13,7 @@ namespace Domain.Services.Interfaces
     {
         Task CreateGroupAsync(string name, Guid creatorId);
         Task<List<ChatGroup>> GetUserGroupsAsync(Guid userId);
-        Task AddMemberAsync(Guid groupId, Guid userId);
+        Task AddMemberAsync(Guid groupId, Guid userId, Guid adminId);   
         Task RemoveMemberAsync(Guid groupId, Guid userId, Guid adminId);
 
         Task<Guid> CreateGroupAsync(Guid creatorId, CreateGroupDto dto);

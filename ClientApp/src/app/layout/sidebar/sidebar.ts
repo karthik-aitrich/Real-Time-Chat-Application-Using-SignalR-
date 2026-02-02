@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { GroupService } from '../../../services/group.service';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { GroupStateService } from '../../../services/GroupStateService ';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,61 +13,95 @@ import { GroupService } from '../../../services/group.service';
   styleUrls: ['./sidebar.css'],
   templateUrl: './sidebar.html'
 })
-export class Sidebar implements OnInit {
+export class Sidebar implements OnInit, OnDestroy {
 
   users: any[] = [];
   groups: any[] = [];
   activeTab: 'chats' | 'groups' = 'chats';
-  
-showSettings = false;
+
+  showSettings = false;
+
+  private routerSub!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private groupService: GroupService,
-    private router: Router
+    private router: Router,
+    private groupState: GroupStateService
   ) {}
 
-ngOnInit(): void {
+  // ===============================
+  // INIT
+  // ===============================
+  ngOnInit(): void {
   console.log('Sidebar INIT');
 
+  // 1️⃣ Load users from resolver
   const resolvedUsers = this.route.snapshot.data['users'] ?? [];
-
   const currentUserId = localStorage.getItem('userId');
 
   this.users = resolvedUsers.filter(
     (u: any) => u.userId !== currentUserId
   );
-  console.log(this.route.snapshot.data);
+
+  // 2️⃣ Initial groups load
+  this.loadGroups();
+
+  // 3️⃣ Listen for group refresh events 🔥
+  this.groupState.refreshGroups$.subscribe(() => {
+    console.log('GROUP REFRESH EVENT RECEIVED');
+    this.loadGroups();
+  });
+
+  // 4️⃣ Reload groups on navigation
+  this.routerSub = this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(() => {
+      this.loadGroups();
+    });
+}
+
+
+  // ===============================
+  // LOAD GROUPS
+  // ===============================
+  loadGroups() {
+    this.groupService.getMyGroups().subscribe({
+      next: groups => {
+        this.groups = groups;
+      },
+      error: err => {
+        console.error('LOAD GROUPS ERROR', err);
+      }
+    });
+  }
+
+  // ===============================
+  // SETTINGS
+  // ===============================
+  toggleSettings() {
+    this.showSettings = !this.showSettings;
+  }
+
+  goToProfile() {
+    this.showSettings = false;
+    this.router.navigate(['/app/profile']);
+  }
+
+  goToChangePassword() {
+    this.showSettings = false;
+    this.router.navigate(['/app/profile/change-password']);
+  }
+
+  // ===============================
+  // NAVIGATION
+  // ===============================
+  openChat(user: any) {
+    this.router.navigate(['/app/chat', user.userId]);
+  }
 
 
   
-
-  this.groupService.getMyGroups().subscribe(groups => {
-    this.groups = groups;
-  });
-}
-
-
-toggleSettings() {
-  this.showSettings = !this.showSettings;
-}
-
-goToProfile() {
-  this.showSettings = false;
-  this.router.navigate(['/app/profile']);
-}
-
-
-
-
-
-  openChat(user: any) {
-    this.router.navigate(
-      ['/app/chat', user.userId],
-      { state: { userName: user.userName } }
-    );
-  }
-
   openGroup(group: any) {
     this.router.navigate(
       ['/app/group', group.groupId],
@@ -80,12 +117,17 @@ goToProfile() {
     this.router.navigate(['/app/settings']);
   }
 
+  // ===============================
+  // TRACKING
+  // ===============================
   trackUser(_: number, user: any) {
     return user.userId;
   }
 
-  goToChangePassword() {
-  this.showSettings = false;
-  this.router.navigate(['/app/profile/change-password']);
-}
+  // ===============================
+  // CLEANUP
+  // ===============================
+  ngOnDestroy(): void {
+    this.routerSub?.unsubscribe();
+  }
 }

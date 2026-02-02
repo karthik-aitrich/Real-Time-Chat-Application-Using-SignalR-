@@ -1,14 +1,52 @@
 <div class="group-info">
 
+  <!-- HEADER -->
   <h3 class="title">Group Members</h3>
 
+  <!-- ADD MEMBERS (ADMIN ONLY) -->
+  <div class="add-member-wrapper" *ngIf="isAdmin">
+
+    <button
+      class="add-member-btn"
+      (click)="toggleAddMembers()">
+      {{ showAddMembers ? 'Cancel' : '+ Add Members' }}
+    </button>
+
+    <div class="add-member-panel" *ngIf="showAddMembers">
+
+      <div class="add-member-list">
+        <div
+          class="add-user"
+          *ngFor="let u of allUsers"
+          (click)="toggleSelect(u.userId)"
+          [class.selected]="selectedUserIds.includes(u.userId)"
+        >
+          <div class="avatar small">
+            {{ u.userName?.[0] || '?' }}
+          </div>
+          <span>{{ u.userName }}</span>
+        </div>
+      </div>
+
+      <button
+        class="confirm-add-btn"
+        [disabled]="selectedUserIds.length === 0"
+        (click)="addMembers()">
+        Add Selected
+      </button>
+
+    </div>
+  </div>
+
+  <!-- MEMBERS LIST -->
   <div class="member-list">
 
     <div class="member-card" *ngFor="let m of members">
 
+      <!-- LEFT -->
       <div class="left">
         <div class="avatar">
-          {{ m.userName[0] }}
+          {{ m.userName?.[0] || '?' }}
         </div>
 
         <div class="details">
@@ -21,7 +59,9 @@
         </div>
       </div>
 
+      <!-- ACTIONS -->
       <div class="actions" *ngIf="m.userId !== myId">
+
         <button
           class="btn admin"
           *ngIf="m.role === 0"
@@ -34,12 +74,13 @@
           (click)="remove(m.userId)">
           Remove
         </button>
+
       </div>
 
     </div>
-
   </div>
 
+  <!-- LEAVE GROUP -->
   <div class="leave-section">
     <button class="leave-btn" (click)="leave()">
       Leave Group

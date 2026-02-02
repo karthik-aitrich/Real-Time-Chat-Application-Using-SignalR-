@@ -11,7 +11,7 @@ import { ChangeDetectorRef } from '@angular/core';
   selector: 'app-login',
   standalone: true,   // 🔥 THIS WAS MISSING
   templateUrl: './login.html',
-  styleUrls: ['../auth-layout.css'],
+  styleUrls: ['../auth-layout.css','login.css'],
   imports: [CommonModule, FormsModule, RouterModule]
 })
 export class Login {

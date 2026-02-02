@@ -22,7 +22,7 @@ namespace ChatApp.Services
                 SenderId = senderId,
                 ReceiverId = receiverId,
                 MessageText = message,
-                SentAt = DateTime.UtcNow,
+                SentAt = DateTime.Now,
                 Status = MessageStatusEnum.Sent
             };
 

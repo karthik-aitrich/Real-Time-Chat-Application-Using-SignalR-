@@ -15,6 +15,20 @@ export const routes: Routes = [
   // AUTH
   { path: 'login', component: Login },
   { path: 'register', component: Register },
+{
+  path: 'forgot-password',
+  loadComponent: () =>
+    import('./auth/reset-password/reset-password')
+      .then(m => m.ResetPassword)
+},
+
+{
+  path: 'reset-password-confirm',
+  loadComponent: () =>
+    import('./auth/reset-password-confirm/reset-password-confirm')
+      .then(m => m.ResetPasswordConfirm)
+},
+
 
   {
     path: 'verify-otp',
@@ -22,6 +36,13 @@ export const routes: Routes = [
       import('./auth/verify-otp/verify-otp')
         .then(m => m.VerifyOtp)
   },
+{
+  path: 'confirm-profile',
+  loadComponent: () =>
+    import('./auth/confirm-account/confirm-account')
+      .then(m => m.ConfirmAccount)
+}
+,
 
   // APP SHELL
  {
@@ -45,9 +66,17 @@ export const routes: Routes = [
           .then(m => m.ChangePassword)
     },
 
+    {
+      path: 'group/create',
+      loadComponent: () =>
+        import('./groups/create-group/create-group')
+          .then(m => m.CreateGroup)
+    },
+
     { path: 'chat/:id', component: ChatWindow },
     { path: 'group/:id', component: GroupChat },
-    { path: 'group-info/:id', component: GroupInfo },
+    { path: 'group-info/:groupId', component: GroupInfo },
+
 
     // EMPTY LAST
     { path: '', component: Empty }

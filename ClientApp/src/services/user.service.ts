@@ -23,4 +23,9 @@ export class UserService {
   clearCache() {
     this.users$ = undefined!;
   }
+
+  getMyProfile(): Observable<User> {
+  return this.http.get<User>(`${this.baseUrl}/me`);
+}
+
 }

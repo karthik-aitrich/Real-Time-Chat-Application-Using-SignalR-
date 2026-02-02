@@ -8,12 +8,14 @@ namespace Domain.DTOs
 {
     public class GroupMessageDto
     {
-        public Guid Id { get; set; }          // 🔑 IMPORTANT
+        public Guid GroupMessageId { get; set; }   // ✅ MATCH ENTITY
         public Guid GroupId { get; set; }
         public Guid SenderId { get; set; }
         public string SenderName { get; set; } = string.Empty;
         public string MessageText { get; set; } = string.Empty;
         public DateTime SentAt { get; set; }
     }
+
+
 
 }

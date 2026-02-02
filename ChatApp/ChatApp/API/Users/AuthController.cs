@@ -14,14 +14,14 @@ namespace ChatApp.Controllers
 {
     public class AuthController : BaseAPIController<AuthController>
     {
-
-		private readonly IWebHostEnvironment _env;
+        private readonly IConfiguration _config;
+        private readonly IWebHostEnvironment _env;
 		private readonly ChatDbContext _context;
         private readonly JwtService _jwtService;
         private readonly IUserService _userService;
         private readonly IEmailService _emailService;
         private readonly IAuthService _authService;
-        public AuthController(IWebHostEnvironment env,ChatDbContext context, JwtService jwtService, IUserService userService,IEmailService emailService,IAuthService authService)    
+        public AuthController(IWebHostEnvironment env,ChatDbContext context, JwtService jwtService, IUserService userService,IEmailService emailService,IAuthService authService , IConfiguration config)    
         {
             _context = context;
             _jwtService = jwtService;
@@ -29,6 +29,7 @@ namespace ChatApp.Controllers
             _emailService=emailService;
             _authService = authService;
             _env = env;
+            _config= config;
 
         }
 
@@ -48,32 +49,39 @@ namespace ChatApp.Controllers
             return Ok();
 
         }
-		private async Task<string> SaveProfilePhoto(IFormFile file)
-		{
-			var allowedTypes = new[] { "image/jpeg", "image/png" };
-			if (!allowedTypes.Contains(file.ContentType))
-				throw new Exception("Invalid image type");
+        private async Task<string> SaveProfilePhoto(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                throw new Exception("No image uploaded");
 
-			var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var allowedTypes = new[]
+            {
+        "image/jpeg",
+        "image/png",
+        "image/jpg",
+        "image/webp"
+    };
 
-			var folderPath = Path.Combine(_env.WebRootPath, "uploads", "profile");
-			Directory.CreateDirectory(folderPath);
+            if (!allowedTypes.Contains(file.ContentType))
+                throw new Exception($"Unsupported image type: {file.ContentType}");
 
-			var filePath = Path.Combine(folderPath, fileName);
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
 
-			try
-			{
-				using var stream = new FileStream(filePath, FileMode.Create);
-				await file.CopyToAsync(stream);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"File save failed: {ex.Message}");
-			}
+            var folderPath = Path.Combine(_env.WebRootPath, "uploads", "profile");
+            Directory.CreateDirectory(folderPath);
 
-			return $"/uploads/profile/{fileName}";
-		}
-		[HttpPost("verify-otp")]
+            var filePath = Path.Combine(folderPath, fileName);
+
+            using var stream = new FileStream(filePath, FileMode.Create);
+            await file.CopyToAsync(stream);
+
+            return $"/uploads/profile/{fileName}";
+        }
+
+
+
+
+        [HttpPost("verify-otp")]
 		public async Task<IActionResult> VerifyOtp([FromForm] VerifyOtpDto dto)
         {
 			bool isValid = await _authService.verifyOtp(dto.Email, dto.Otp);
@@ -83,32 +91,37 @@ namespace ChatApp.Controllers
 		
 			return Ok(new { message = "OTP verified. Account created successfully." });
 		}
-		[HttpPost("confirm")]
-        public async Task<IActionResult> confirmAccount([FromForm]ConfirmDTo dto)
+
+        [HttpPost("confirm")]
+        public async Task<IActionResult> ConfirmAccount([FromForm] ConfirmDTo dto)
         {
-			var photoUrl = await SaveProfilePhoto(dto.ProfilePhoto);
-			var user = new User
-			{
-				UserId = Guid.NewGuid(),
-				UserName = dto.UserName,
-				Email = dto.Email,
-                IsOnline=false,
-				LastSeen = DateTime.Now,
-				ProfilePhoto = photoUrl,
-PasswordHash = HashPassword(dto.Password)
-			};
+            if (dto.ProfilePhoto == null || dto.ProfilePhoto.Length == 0)
+                return BadRequest("Profile photo is required");
 
-			_context.Users.Add(user);
-			await _context.SaveChangesAsync();
-			// ✅ OTP verified – create account here
-			return Ok(new { message = " Account created successfully." });
+            var photoUrl = await SaveProfilePhoto(dto.ProfilePhoto);
+
+            var user = new User
+            {
+                UserId = Guid.NewGuid(),
+                UserName = dto.UserName,
+                Email = dto.Email,
+                IsOnline = false,
+                LastSeen = DateTime.Now,
+                ProfilePhoto = photoUrl,
+                PasswordHash = HashPassword(dto.Password)
+            };
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Account created successfully" });
+        }
 
 
-		}
 
 
 
-		[Authorize]
+        [Authorize]
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
@@ -177,22 +190,22 @@ PasswordHash = HashPassword(dto.Password)
         public async Task<IActionResult> ForgotPassword(ForgotPasswordDto dto)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
-
             if (user == null)
-                return Ok(); // security: don't reveal user existence
+                return Ok();
 
             var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
-
             user.ResetToken = token;
             user.ResetTokenExpiry = DateTime.UtcNow.AddMinutes(15);
-
             await _context.SaveChangesAsync();
 
-            // TODO: send email (for now log it)
-            Console.WriteLine($"RESET TOKEN: {token}");
+            var resetLink = $"{_config["ClientUrl"]}/reset-password-confirm?token={Uri.EscapeDataString(token)}";
+
+            await _emailService.SendResetPasswordEmailAsync(dto.Email, resetLink);
 
             return Ok(new { message = "Password reset link sent" });
         }
+
+
 
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword(ResetPasswordDto dto)

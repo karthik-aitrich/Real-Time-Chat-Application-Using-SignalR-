@@ -42,12 +42,15 @@ namespace ChatApp.Services
             // 3️⃣ Return DTO (NO Id because entity doesn't have it yet)
             return new GroupMessageDto
             {
+                GroupMessageId = savedMessage.GroupMessageId, // 🔥 FIX
                 GroupId = groupId,
                 SenderId = senderId,
                 SenderName = user?.UserName ?? "Unknown",
                 MessageText = savedMessage.MessageText,
                 SentAt = savedMessage.SentAt
             };
+
+
         }
 
         // 🔥 USED BY API CONTROLLER
@@ -63,12 +66,14 @@ namespace ChatApp.Services
 
                 result.Add(new GroupMessageDto
                 {
+                    GroupMessageId = m.GroupMessageId,  // 🔥 FIX
                     GroupId = m.GroupId,
                     SenderId = m.SenderId,
                     SenderName = user?.UserName ?? "Unknown",
                     MessageText = m.MessageText,
                     SentAt = m.SentAt
                 });
+
             }
 
             return result;

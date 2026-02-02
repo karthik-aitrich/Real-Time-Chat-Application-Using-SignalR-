@@ -206,18 +206,57 @@
 }
 
 /* AVATAR */
-.avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #5f6cff, #ff6bdc);
+.avatar-wrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
 
+.avatar-img,
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #6f7bff, #ff6bdc);
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-weight: 700;
-  font-size: 16px;
+  color: white;
+  font-size: 18px;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background: #aaa;
+  border-radius: 50%;
+  border: 2px solid #1e1e2e;
+}
+
+.status-dot.online {
+  background: #4caf50;
+}
+
+/* STATUS DOT */
+.status-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #666;
+  border: 2px solid #1b1f3b;
+}
+
+/* ONLINE */
+.status-dot.online {
+  background: #2ecc71;
 }
 
 .avatar.group {

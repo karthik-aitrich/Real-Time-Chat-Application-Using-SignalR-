@@ -1,78 +1,108 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class GroupService {
 
-  baseUrl = 'http://localhost:5146/api/v1/group';
-
+  private baseUrl = 'http://localhost:5146/api/v1/group';
 
   constructor(private http: HttpClient) {}
 
-  createGroup(name: string) {
-    return this.http.post(`${this.baseUrl}/create`, {
+  // ===============================
+  // CREATE GROUP
+  // ===============================
+  createGroup(name: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/create`, {
       name,
       creatorId: localStorage.getItem('userId')
     });
   }
+     
+//   addMember(groupId: string, userId: string) {
+//   return this.http.post(
+//     '/api/v1/group/add-member',
+//     { groupId, userId }
+//   );
+// }
 
-  createGroupWithMembers(name: string, memberIds: string[]) {
-  return this.http.post<any>(
-    'http://localhost:5146/api/v1/group/create-with-members',
-    { name, memberIds }
-  );
+getAllUsers() {
+  return this.http.get<any[]>('http://localhost:5146/api/v1/User/users');
+
 }
 
-
-
-  getMyGroups() {
-    return this.http.get<any[]>(
-      `${this.baseUrl}/${localStorage.getItem('userId')}`
+  createGroupWithMembers(
+    name: string,
+    memberIds: string[]
+  ): Observable<any> {
+    return this.http.post<any>(
+      `${this.baseUrl}/create-with-members`,
+      { name, memberIds }
     );
   }
 
-  getGroupMembers(groupId: string) {
+  // ===============================
+  // SIDEBAR
+  // ===============================
+  getMyGroups(): Observable<any[]> {
+    const userId = localStorage.getItem('userId');
+    return this.http.get<any[]>(
+      `${this.baseUrl}/user/${userId}`
+    );
+  }
+
+  // ===============================
+  // GROUP INFO (🔥 THIS IS THE KEY)
+  // ===============================
+  getGroupMembers(groupId: string): Observable<any[]> {
     return this.http.get<any[]>(
       `${this.baseUrl}/${groupId}/members`
     );
   }
 
-  addMember(groupId: string, userId: string) {
-    return this.http.post(`${this.baseUrl}/add-member`, {
+  // ===============================
+  // MEMBER MANAGEMENT
+  // ===============================
+  addMember(groupId: string, userId: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/add-member`, {
+      groupId,
+      userId
+    });
+  }
+
+  removeMember(groupId: string, userId: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/remove-member`, {
       groupId,
       userId,
       adminId: localStorage.getItem('userId')
     });
   }
 
-  removeMember(groupId: string, userId: string) {
-    return this.http.post(`${this.baseUrl}/remove-member`, {
-      groupId,
-      userId,
-      adminId: localStorage.getItem('userId')
-    });
-  }
-
-  changeRole(groupId: string, userId: string, role: number) {
-    return this.http.post(`${this.baseUrl}/change-role`, {
+  changeRole(
+    groupId: string,
+    userId: string,
+    role: number
+  ): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/change-role`, {
       groupId,
       userId,
       role
     });
   }
 
-  leaveGroup(groupId: string) {
-    return this.http.post(`${this.baseUrl}/leave`, {
+  leaveGroup(groupId: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/leave`, {
       groupId,
       userId: localStorage.getItem('userId')
     });
   }
 
-  getGroupMessages(groupId: string) {
-  return this.http.get<any[]>(
-    `http://localhost:5146/api/v1/GroupChat/group/${groupId}`
-  );
-}
-
-
+  // ===============================
+  // GROUP CHAT HISTORY
+  // ===============================
+  getGroupMessages(groupId: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `http://localhost:5146/api/v1/GroupChat/group/${groupId}`
+    );
+  }
 }

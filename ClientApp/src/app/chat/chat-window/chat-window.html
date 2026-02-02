@@ -1,11 +1,22 @@
 <div class="chat-window">
 
   <div class="chat-header">
-    <div>
-      <div class="name">{{ selectedName || 'Select a chat' }}</div>
-      <div class="status">Offline</div>
+  <div class="header-text">
+    <div class="name">{{ selectedName || 'Select a chat' }}</div>
+
+    <!-- ONLINE / OFFLINE -->
+    <div class="status" *ngIf="!isTyping">
+      <span *ngIf="isOnline; else offline">Online</span>
+      <ng-template #offline>Offline</ng-template>
+    </div>
+
+    <!-- TYPING -->
+    <div class="typing" *ngIf="isTyping">
+      typing…
     </div>
   </div>
+</div>
+
 
   <div #chatBody class="chat-body">
     <div *ngIf="isLoading" class="loading">Loading messages...</div>
@@ -21,11 +32,28 @@
           <div class="meta">
   
 
-  <span *ngIf="msg.senderId === senderId">
-    <span *ngIf="msg.status === 'Sent'">✔</span>
-    <span *ngIf="msg.status === 'Delivered'">✔✔</span>
-    <span *ngIf="msg.status === 'Seen'" class="seen">✔✔</span>
-  </span>
+ <span *ngIf="msg.senderId === senderId" class="ticks">
+
+  <!-- Sent -->
+  <!-- <svg *ngIf="msg.status === 'Sent'" class="tick single" viewBox="0 0 16 15">
+    <path d="M5.5 11.5L1.5 7.5L0 9l5.5 5.5L16 4l-1.5-1.5z"/>
+  </svg>
+
+ 
+  <svg *ngIf="msg.status === 'Delivered'" class="tick double" viewBox="0 0 16 15">
+    <path d="M1 7l4 4L14 2"/>
+    <path d="M5 7l4 4L16 2"/>
+  </svg>
+
+  
+  <svg *ngIf="msg.status === 'Read'" class="tick double read" viewBox="0 0 16 15">
+    <path d="M1 7l4 4L14 2"/>
+    <path d="M5 7l4 4L16 2"/>
+  </svg> -->
+
+</span>
+
+
 </div>
 
         </div>
@@ -37,6 +65,7 @@
   <div class="chat-input">
    <input
   [(ngModel)]="message"
+  (input)="onTyping()"
   placeholder="Type a message..."
   (keydown.enter)="$event.preventDefault(); send()"
 />

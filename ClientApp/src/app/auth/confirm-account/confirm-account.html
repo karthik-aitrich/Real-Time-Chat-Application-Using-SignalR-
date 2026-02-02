@@ -1,0 +1,67 @@
+<div class="auth-page">
+
+  <!-- LEFT BRAND -->
+  <div class="auth-brand">
+    <img src="assets/logo.jpeg" alt="Chatz logo" />
+    <h1>Chatz</h1>
+    <p>Complete your profile</p>
+  </div>
+
+  <!-- RIGHT FORM -->
+  <div class="auth-card">
+
+    <h2>Complete Your Profile</h2>
+    <span class="subtitle">Add a profile picture to continue</span>
+
+    <!-- USERNAME -->
+    <input
+      type="text"
+      [(ngModel)]="userName"
+      readonly
+    />
+
+    <!-- EMAIL -->
+    <input
+      type="email"
+      [(ngModel)]="email"
+      readonly
+    />
+
+    <!-- FILE INPUT -->
+   <!-- AVATAR PICKER (WhatsApp style) -->
+<div class="avatar-picker" (click)="fileInput.click()">
+
+  <img
+    *ngIf="previewUrl; else placeholder"
+    [src]="previewUrl"
+    class="avatar-img"
+  />
+
+  <ng-template #placeholder>
+    <div class="avatar-placeholder">+</div>
+  </ng-template>
+
+  <div class="camera-icon">📷</div>
+
+  <input
+    #fileInput
+    type="file"
+    accept="image/*"
+    hidden
+    (change)="onFileSelected($event)"
+  />
+</div>
+
+
+    <!-- SUBMIT -->
+    <button
+      class="auth-btn"
+      (click)="submit()"
+      [disabled]="!selectedFile || loading">
+      {{ loading ? 'Saving...' : 'Finish' }}
+    </button>
+
+  </div>
+
+  
+</div>

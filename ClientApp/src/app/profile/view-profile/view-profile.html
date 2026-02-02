@@ -1,16 +1,25 @@
-<div class="profile-page">
-  <h2>My Profile</h2>
+<div class="profile-page" *ngIf="user; else loading">
 
-  <div
-    class="profile-card"
-    [attr.data-initial]="userName?.charAt(0)">
+  <div class="profile-avatar">
+    <img
+      *ngIf="user.profilePhoto; else fallback"
+      [src]="user.profilePhoto"
+      class="avatar-img"
+    />
 
-    <p><b>Username:</b> {{ userName }}</p>
-    <p><b>Email:</b> {{ email }}</p>
-
-    <!-- LOGOUT -->
-    <button class="logout-btn" (click)="logout()">
-      🚪 Logout
-    </button>
+    <ng-template #fallback>
+      <div class="avatar-placeholder">
+        {{ initial }}
+      </div>
+    </ng-template>
   </div>
+
+  <h2>{{ user.userName }}</h2>
+  <p>{{ user.email }}</p>
+
+  <button class="logout-btn" (click)="logout()">🚪 Logout</button>
 </div>
+
+<ng-template #loading>
+  <div class="profile-loading">Loading profile…</div>
+</ng-template>

@@ -20,6 +20,26 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.header-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.chat-header .typing {
+  font-size: 12px;
+  color: #6fd3ff;
+  font-style: italic;
+  margin-top: 2px;
+
+  /* 🔥 prevent layout jump */
+  height: 14px;
+}
+
+.chat-header .status {
+  height: 14px;
+}
+
 
 .chat-header .name {
   font-size: 16px;
@@ -135,4 +155,26 @@
   background: linear-gradient(135deg, #5f6cff, #ff6bdc);
   color: #fff;
   font-size: 16px;
+}
+.seen {
+  color: #4fc3f7;
+}
+.ticks {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+}
+
+.tick {
+  width: 14px;
+  height: 14px;
+  fill: #aaa;
+}
+
+.tick.double {
+  margin-left: -4px;
+}
+
+.tick.read {
+  fill: #4fc3f7; /* WhatsApp blue */
 }
