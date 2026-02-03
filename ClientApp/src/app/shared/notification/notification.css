@@ -1,0 +1,45 @@
+.notification-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification {
+  min-width: 220px;
+  max-width: 280px;
+
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  background: rgba(40, 40, 60, 0.95);
+  color: #fff;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  animation: slideIn 0.2s ease-out;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.message {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

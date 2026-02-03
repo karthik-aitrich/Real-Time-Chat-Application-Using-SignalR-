@@ -58,7 +58,7 @@ onFileSelected(event: Event) {
 
 
 
-  submit() {
+ submit() {
   if (!this.selectedFile) return;
 
   const formData = new FormData();
@@ -69,21 +69,28 @@ onFileSelected(event: Event) {
 
   this.loading = true;
 
-  this.http.post(
-    'http://localhost:5146/api/v1/auth/confirm',
-    formData
-  ).subscribe({
-    next: () => {
-      this.loading = false;
+  this.http.post<any>(
+  'http://localhost:5146/api/v1/auth/confirm',
+  formData
+).subscribe({
+  next: (res) => {
 
-      // ✅ GO TO CHAT UI
-      this.router.navigate(['/app'], { replaceUrl: true });
-    },
-    error: () => {
-      this.loading = false;
-    }
-  });
+    // ✅ SAVE TOKEN
+    localStorage.setItem('token', res.token);
+    localStorage.setItem('userId', res.user.userId);
+    localStorage.setItem('userName', res.user.userName);
+    localStorage.setItem('email', res.user.email);
+
+    // ✅ GO TO APP
+    this.router.navigate(['/app'], { replaceUrl: true });
+  },
+  error: () => {
+    this.loading = false;
+  }
+});
+
 }
+
 
 
 

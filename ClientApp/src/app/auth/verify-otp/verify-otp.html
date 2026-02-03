@@ -1,20 +1,33 @@
 <div class="auth-page">
+
+  <!-- LEFT BRAND -->
+  <div class="auth-brand">
+    <img src="assets/logo.jpeg" alt="Chatz logo" />
+    <h1>Chatz</h1>
+    <p>Verify your identity</p>
+  </div>
+
+  <!-- RIGHT FORM -->
   <div class="auth-card">
 
     <h2>Verify OTP</h2>
-    <p class="subtitle">
+    <span class="subtitle">
       OTP sent to <b>{{ email }}</b>
-    </p>
+    </span>
 
+    <!-- ⚠️ ERROR MESSAGE -->
     <p class="error-text" *ngIf="errorMessage">
       {{ errorMessage }}
     </p>
 
-    <input
-      type="text"
-      placeholder="Enter OTP"
-      [(ngModel)]="otp"
-    />
+   <input
+  type="text"
+  placeholder="Enter 6-digit OTP"
+  [(ngModel)]="otp"
+  maxlength="6"
+  inputmode="numeric"
+/>
+
 
     <button
       class="auth-btn"
@@ -23,5 +36,11 @@
       Verify
     </button>
 
+    <!-- <p class="footer-text">
+      Didn’t receive the code?
+      <a (click)="resendOtp()">Resend OTP</a>
+    </p> -->
+
   </div>
+
 </div>
