@@ -47,10 +47,12 @@ getMe() {
 
   register(userName: string, email: string, password: string) {
   return this.http.post(
-    'http://localhost:5146/api/v1/Auth/register',
-    { userName, email, password }
+    `${this.baseUrl}/register`,
+    { userName, email, password },
+    { responseType: 'text' } // 🔥 REQUIRED
   );
 }
+
 
 logout() {
   return this.http.post(`${this.baseUrl}/logout`, {});
@@ -58,8 +60,11 @@ logout() {
 
 setAuthSession(res: any) {
   localStorage.setItem('token', res.token);
-  localStorage.setItem('user', JSON.stringify(res.user));
+  localStorage.setItem('userId', res.user.userId);
+  localStorage.setItem('userName', res.user.userName);
+  localStorage.setItem('email', res.user.email);
 }
+
 
 isLoggedIn(): boolean {
   return !!localStorage.getItem('token');
@@ -93,6 +98,7 @@ resetPassword(token: string, newPassword: string) {
     }
   );
 }
+
 
 
 

@@ -4,12 +4,13 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Sidebar } from '../sidebar/sidebar';
 import { NotificationService } from '../../../services/notification.service';
+import { Notification } from '../../shared/notification/notification';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.html',
   styleUrls: ['./main-layout.css'],
-  imports: [CommonModule, RouterModule,Sidebar] 
+  imports: [CommonModule, RouterModule,Sidebar,Notification] 
 })
 export class MainLayout implements OnInit {
 
@@ -26,9 +27,12 @@ export class MainLayout implements OnInit {
     // this.chat.onMessageReceived();
 
     // 🔥 ask browser permission once
-    if (Notification.permission !== 'granted') {
-      Notification.requestPermission();
-    }
+   if ('Notification' in window) {
+  if (window.Notification.permission === 'default') {
+    window.Notification.requestPermission();
+  }
+}
+    
 
     console.log('SignalR + notifications ready');
   }

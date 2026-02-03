@@ -48,12 +48,18 @@ export class Register {
         // ✅ Go to OTP screen
         this.router.navigate(['/verify-otp']);
       },
-      error: (err) => {
-        this.errorMessage =
-          err.status === 400
-            ? 'User already exists or invalid data'
-            : 'Registration failed. Try again.';
-      }
+     error: (err) => {
+  if (err.error) {
+    // backend message (plain text or JSON)
+    this.errorMessage =
+      typeof err.error === 'string'
+        ? err.error
+        : err.error.message || 'Registration failed';
+  } else {
+    this.errorMessage = 'Registration failed. Try again.';
+  }
+}
+
     });
 }
 

@@ -12,6 +12,7 @@ namespace Domain.Services.Interfaces
 		Task<bool> verify(string email, string enteredOtp);
 		OtpInfo? GetOtp(string email);
 
+
 		Task SaveOtp(string email, OtpInfo otpInfo);
 	}
 }

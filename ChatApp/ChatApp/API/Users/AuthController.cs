@@ -114,7 +114,20 @@ namespace ChatApp.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Account created successfully" });
+            var token = _jwtService.GenerateToken(user);
+
+
+            return Ok(new
+            {
+                token,
+                user = new
+                {
+                    user.UserId,
+                    user.UserName,
+                    user.Email
+                }
+            });
+
         }
 
 

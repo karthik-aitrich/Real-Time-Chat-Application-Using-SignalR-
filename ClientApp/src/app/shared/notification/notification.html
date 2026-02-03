@@ -1,0 +1,9 @@
+<div class="notification-container">
+  <div
+    class="notification"
+    *ngFor="let n of notifications$ | async"
+  >
+    <div class="title">{{ n.title }}</div>
+    <div class="message">{{ n.message }}</div>
+  </div>
+</div>

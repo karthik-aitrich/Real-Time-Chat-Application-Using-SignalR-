@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { error } from 'console';
 
 @Component({
   standalone: true,
@@ -36,25 +37,32 @@ export class VerifyOtp {
     this.password = data.password;
   }
 
-  verifyOtp() {
+verifyOtp() {
   const formData = new FormData();
   formData.append('Email', this.email);
   formData.append('Otp', this.otp.trim());
 
   this.authService.verifyOtp(formData).subscribe({
-    next: (res: any) => {
+    next: () => {
+     this.router.navigate(
+  ['/confirm-profile'],
+  {
+    state: {
+      userName: this.userName,
+      email: this.email,
+      password: this.password
+    }
+  }
+);
 
-      // 🔐 Save auth info (token / user) ONCE
-      this.authService.setAuthSession(res);
-
-      // ✅ Go DIRECTLY to chat screen
-      this.router.navigate(['/chat'], { replaceUrl: true });
     },
     error: () => {
       this.errorMessage = 'Invalid or expired OTP';
     }
   });
 }
+
+
 
 
 }
