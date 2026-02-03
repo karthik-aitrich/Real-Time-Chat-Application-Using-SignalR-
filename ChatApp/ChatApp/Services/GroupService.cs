@@ -38,17 +38,19 @@ public class GroupService : IGroupService
         foreach (var userId in members)
         {
             if (userId == creatorId) continue;
-            await _repo.AddMemberAsync(groupId, userId, GroupRoleEnum.Member);
+            await _repo.AddMemberAsync(groupId, userId, creatorId);
+
         }
 
         return groupId;
     }
 
-
-    public async Task AddMemberAsync(Guid groupId, Guid userId)
+     
+    public async Task AddMemberAsync(Guid groupId, Guid userId, Guid adminId)
     {
-        await _repo.AddMemberAsync(groupId, userId, GroupRoleEnum.Member);
+        await _repo.AddMemberAsync(groupId, userId, adminId);
     }
+
 
     public async Task RemoveMemberAsync(Guid groupId, Guid userId, Guid adminId)
     {
