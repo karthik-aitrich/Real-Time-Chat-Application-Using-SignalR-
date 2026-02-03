@@ -19,7 +19,7 @@ export class GroupService {
     });
   }
      
-//   addMember(groupId: string, userId: string) {
+//   addMember(groupId: string, us  erId: string) {
 //   return this.http.post(
 //     '/api/v1/group/add-member',
 //     { groupId, userId }
@@ -63,12 +63,14 @@ getAllUsers() {
   // ===============================
   // MEMBER MANAGEMENT
   // ===============================
-  addMember(groupId: string, userId: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/add-member`, {
-      groupId,
-      userId
-    });
-  }
+  addMember(groupId: string, userId: string) {
+  return this.http.post(`${this.baseUrl}/add-member`, {
+    groupId,
+    userId,
+    adminId: localStorage.getItem('userId')
+  });
+}
+
 
   removeMember(groupId: string, userId: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/remove-member`, {
