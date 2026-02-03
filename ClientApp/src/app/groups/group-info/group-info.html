@@ -3,21 +3,62 @@
   <!-- HEADER -->
   <h3 class="title">Group Members</h3>
 
+  <!-- MEMBERS LIST -->
+  <div class="member-list">
+    <div class="member-card" *ngFor="let m of members">
+
+      <div class="left">
+        <div class="avatar">
+          {{ m.userName?.[0] || '?' }}
+        </div>
+
+        <div class="details">
+          <div class="name">
+            {{ m.userName }}
+            <span class="admin-badge" *ngIf="m.role === 1">
+              Admin
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions" *ngIf="m.userId !== myId">
+        <button
+          class="btn admin"
+          *ngIf="m.role === 0"
+          (click)="changeRole(m.userId, 1)">
+          Make Admin
+        </button>
+
+        <button
+          class="btn remove"
+          (click)="remove(m.userId)">
+          Remove
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ADD MEMBERS (ADMIN ONLY) -->
   <div class="add-member-wrapper" *ngIf="isAdmin">
 
+    <!-- SINGLE CONTROL BUTTON -->
     <button
       class="add-member-btn"
+      [class.open]="showAddMembers"
       (click)="toggleAddMembers()">
-      {{ showAddMembers ? 'Cancel' : '+ Add Members' }}
+      <span class="icon">+</span>
+      {{ showAddMembers ? 'Cancel' : 'Add Members' }}
     </button>
 
+    <!-- PANEL -->
     <div class="add-member-panel" *ngIf="showAddMembers">
 
       <div class="add-member-list">
         <div
           class="add-user"
-          *ngFor="let u of allUsers"
+          *ngFor="let u of addableUsers"
           (click)="toggleSelect(u.userId)"
           [class.selected]="selectedUserIds.includes(u.userId)"
         >
@@ -34,48 +75,6 @@
         (click)="addMembers()">
         Add Selected
       </button>
-
-    </div>
-  </div>
-
-  <!-- MEMBERS LIST -->
-  <div class="member-list">
-
-    <div class="member-card" *ngFor="let m of members">
-
-      <!-- LEFT -->
-      <div class="left">
-        <div class="avatar">
-          {{ m.userName?.[0] || '?' }}
-        </div>
-
-        <div class="details">
-          <div class="name">
-            {{ m.userName }}
-            <span class="admin-badge" *ngIf="m.role === 1">
-              Admin
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ACTIONS -->
-      <div class="actions" *ngIf="m.userId !== myId">
-
-        <button
-          class="btn admin"
-          *ngIf="m.role === 0"
-          (click)="changeRole(m.userId, 1)">
-          Make Admin
-        </button>
-
-        <button
-          class="btn remove"
-          (click)="remove(m.userId)">
-          Remove
-        </button>
-
-      </div>
 
     </div>
   </div>

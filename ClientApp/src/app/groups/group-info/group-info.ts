@@ -18,6 +18,8 @@ export class GroupInfo implements OnInit, OnDestroy {
   myId = localStorage.getItem('userId');
   showAddMembers = false;
 allUsers: any[] = [];
+addableUsers: any[] = [];
+
 selectedUserIds: string[] = [];
 isAdmin = false;
 
@@ -62,15 +64,17 @@ isAdmin = false;
 
 loadUsers() {
   this.groupService.getAllUsers().subscribe(users => {
-    console.log('ALL USERS FROM API:', users);
-    console.log('GROUP MEMBERS:', this.members);
+    this.allUsers = users;
 
-    const memberIds = this.members.map(m => m.userId);
-    this.allUsers = users.filter(u => !memberIds.includes(u.userId));
+    // 👇 recompute if members already loaded
+    if (this.members.length) {
+      this.computeAddableUsers();
+    }
 
-    console.log('ADDABLE USERS:', this.allUsers);
+    this.cdr.detectChanges();
   });
 }
+
 
 
 toggleSelect(userId: string) {
@@ -83,46 +87,58 @@ toggleSelect(userId: string) {
 }
 
 addMembers() {
-  this.selectedUserIds.forEach(userId => {
-    this.groupService.addMember(this.groupId, userId).subscribe({
-      next: () => {
-        const user = this.allUsers.find(u => u.userId === userId);
-        if (!user) return;
+  const addedUsers = this.allUsers.filter(u =>
+    this.selectedUserIds.includes(u.userId)
+  );
 
-        this.members.push({
-          userId: user.userId,
-          userName: user.userName,
-          role: 0 // Member
-        });
-      }
+  addedUsers.forEach(u => {
+    this.members.push({
+      userId: u.userId,
+      userName: u.userName,
+      role: 0
     });
   });
+
+  // 🔥 remove from addable list
+  this.addableUsers = this.addableUsers.filter(
+    u => !this.selectedUserIds.includes(u.userId)
+  );
 
   this.selectedUserIds = [];
   this.showAddMembers = false;
 
-  // 👇 ONE change detection only
   this.cdr.detectChanges();
   this.groupState.refreshGroups();
 }
 
-loadMembers() {
-  console.log('LOADING MEMBERS FOR:', this.groupId);
 
+private computeAddableUsers() {
+  const memberIds = this.members.map(m => m.userId);
+  this.addableUsers = this.allUsers.filter(
+    u => !memberIds.includes(u.userId)
+  );
+}
+
+
+loadMembers() {
   this.groupService.getGroupMembers(this.groupId).subscribe({
     next: members => {
-      console.log('MEMBERS LOADED:', members);
       this.members = members;
 
       this.isAdmin = members.some(
         m => m.userId === this.myId && m.role === 1
       );
 
+      // 👇 recompute if users already loaded
+      if (this.allUsers.length) {
+        this.computeAddableUsers();
+      }
+
       this.cdr.detectChanges();
-    },
-    error: err => console.error('LOAD MEMBERS ERROR:', err)
+    }
   });
 }
+
 
  
 
