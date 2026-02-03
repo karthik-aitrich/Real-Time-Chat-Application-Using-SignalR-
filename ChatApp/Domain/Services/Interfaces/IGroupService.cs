@@ -11,16 +11,18 @@ namespace Domain.Services.Interfaces
 {
     public interface IGroupService
     {
-        Task CreateGroupAsync(string name, Guid creatorId);
-        Task<List<ChatGroup>> GetUserGroupsAsync(Guid userId);
-        Task AddMemberAsync(Guid groupId, Guid userId, Guid adminId);   
-        Task RemoveMemberAsync(Guid groupId, Guid userId, Guid adminId);
-
         Task<Guid> CreateGroupAsync(Guid creatorId, CreateGroupDto dto);
+
+        Task<List<ChatGroup>> GetUserGroupsAsync(Guid userId);
+
+        Task AddMemberAsync(Guid groupId, Guid userId, Guid adminId);
+        Task RemoveMemberAsync(Guid groupId, Guid userId, Guid adminId);
 
         Task LeaveGroupAsync(Guid groupId, Guid userId);
         Task ChangeRoleAsync(Guid groupId, Guid userId, int role);
+
         Task<List<GroupMemberDto>> GetGroupMembersAsync(Guid groupId);
     }
+
 
 }
