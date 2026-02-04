@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { GroupService } from '../../../services/group.service';
 import { Subject, Subscription } from 'rxjs';
 import { GroupStateService } from '../../../services/GroupStateService ';
+import { forkJoin } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -87,28 +88,28 @@ toggleSelect(userId: string) {
 }
 
 addMembers() {
-  const addedUsers = this.allUsers.filter(u =>
-    this.selectedUserIds.includes(u.userId)
+  const requests = this.selectedUserIds.map(userId =>
+    this.groupService.addMember({
+      groupId: this.groupId,
+      userId
+    })
   );
 
-  addedUsers.forEach(u => {
-    this.members.push({
-      userId: u.userId,
-      userName: u.userName,
-      role: 0
-    });
+  forkJoin(requests).subscribe({
+    next: () => {
+      // 🔁 reload from DB (source of truth)
+      this.loadMembers();
+
+      // UI cleanup
+      this.showAddMembers = false;
+      this.selectedUserIds = [];
+
+      this.groupState.refreshGroups();
+    },
+    error: err => {
+      console.error('Failed to add members', err);
+    }
   });
-
-  // 🔥 remove from addable list
-  this.addableUsers = this.addableUsers.filter(
-    u => !this.selectedUserIds.includes(u.userId)
-  );
-
-  this.selectedUserIds = [];
-  this.showAddMembers = false;
-
-  this.cdr.detectChanges();
-  this.groupState.refreshGroups();
 }
 
 

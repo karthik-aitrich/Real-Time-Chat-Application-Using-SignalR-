@@ -133,6 +133,17 @@ verifyOtp(formData: FormData) {
     formData
   );
 }
+resendOtp(email: string) {
+  return this.http.post(
+    `${this.baseUrl}/register`,
+    {
+      userName: 'temp',   // backend ignores if already exists
+      email,
+      password: 'temp'    // backend ignores if user already pending
+    },
+    { responseType: 'text' }
+  );
+}
 
 
 
