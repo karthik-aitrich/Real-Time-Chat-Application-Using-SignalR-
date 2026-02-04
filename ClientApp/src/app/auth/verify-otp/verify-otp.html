@@ -9,6 +9,13 @@
 
   <!-- RIGHT FORM -->
   <div class="auth-card">
+<button
+  class="back-arrow"
+  type="button"
+  (click)="goBack()"
+  aria-label="Back to Register">
+  ←
+</button>
 
     <h2>Verify OTP</h2>
     <span class="subtitle">
@@ -35,6 +42,37 @@
       [disabled]="!otp">
       Verify
     </button>
+    
+    
+
+    <div class="otp-actions">
+
+ <p class="footer-text">
+  Didn’t receive the code?
+  <span
+    class="auth-link"
+    [class.disabled]="resendDisabled"
+    (click)="!resendDisabled && resendOtp()">
+    Resend OTP
+  </span>
+
+  <span *ngIf="resendDisabled">
+    ({{ resendTimer }}s)
+  </span>
+</p>
+
+
+  <!-- <button
+    class="back-btn"
+    type="button"
+    (click)="goBack()">
+    ← Back to Register
+  </button> -->
+
+</div>
+
+
+
 
     <!-- <p class="footer-text">
       Didn’t receive the code?

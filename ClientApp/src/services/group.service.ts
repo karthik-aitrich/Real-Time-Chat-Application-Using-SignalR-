@@ -63,13 +63,14 @@ getAllUsers() {
   // ===============================
   // MEMBER MANAGEMENT
   // ===============================
-  addMember(groupId: string, userId: string) {
-  return this.http.post(`${this.baseUrl}/add-member`, {
-    groupId,
-    userId,
-    adminId: localStorage.getItem('userId')
-  });
+addMember(dto: { groupId: string; userId: string }) {
+  return this.http.post(
+    `${this.baseUrl}/add-member`,
+    dto
+  );
 }
+
+
 
 
   removeMember(groupId: string, userId: string): Observable<any> {
