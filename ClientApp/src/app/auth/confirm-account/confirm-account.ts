@@ -20,9 +20,12 @@ export class ConfirmAccount {
   userName = '';
   email = '';
   password = '';
+  defaultAvatar = 'assets/user.png';
+  previewUrl: string | null = this.defaultAvatar;
+
 
   selectedFile: File | null = null;
-  previewUrl: string | null = null;
+  // previewUrl: string | null = null;
 
   loading = false;
 
@@ -58,38 +61,37 @@ onFileSelected(event: Event) {
 
 
 
- submit() {
-  if (!this.selectedFile) return;
-
+submit() {
   const formData = new FormData();
   formData.append('UserName', this.userName);
   formData.append('Email', this.email);
   formData.append('Password', this.password);
-  formData.append('ProfilePhoto', this.selectedFile);
+
+  // send image only if selected
+  if (this.selectedFile) {
+    formData.append('ProfilePhoto', this.selectedFile);
+  }
 
   this.loading = true;
 
   this.http.post<any>(
-  'http://localhost:5146/api/v1/auth/confirm',
-  formData
-).subscribe({
-  next: (res) => {
+    'http://localhost:5146/api/v1/auth/confirm',
+    formData
+  ).subscribe({
+    next: (res) => {
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('userId', res.user.userId);
+      localStorage.setItem('userName', res.user.userName);
+      localStorage.setItem('email', res.user.email);
 
-    // ✅ SAVE TOKEN
-    localStorage.setItem('token', res.token);
-    localStorage.setItem('userId', res.user.userId);
-    localStorage.setItem('userName', res.user.userName);
-    localStorage.setItem('email', res.user.email);
-
-    // ✅ GO TO APP
-    this.router.navigate(['/app'], { replaceUrl: true });
-  },
-  error: () => {
-    this.loading = false;
-  }
-});
-
+      this.router.navigate(['/app'], { replaceUrl: true });
+    },
+    error: () => {
+      this.loading = false;
+    }
+  });
 }
+
 
 
 

@@ -57,7 +57,7 @@
     <button
       class="auth-btn"
       (click)="submit()"
-      [disabled]="!selectedFile || loading">
+      [disabled]="loading">
       {{ loading ? 'Saving...' : 'Finish' }}
     </button>
 
