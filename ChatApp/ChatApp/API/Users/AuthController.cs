@@ -92,13 +92,16 @@ namespace ChatApp.Controllers
 			return Ok(new { message = "OTP verified. Account created successfully." });
 		}
 
+        
         [HttpPost("confirm")]
         public async Task<IActionResult> ConfirmAccount([FromForm] ConfirmDTo dto)
         {
-            if (dto.ProfilePhoto == null || dto.ProfilePhoto.Length == 0)
-                return BadRequest("Profile photo is required");
+            string? photoUrl = null;
 
-            var photoUrl = await SaveProfilePhoto(dto.ProfilePhoto);
+            if (dto.ProfilePhoto != null && dto.ProfilePhoto.Length > 0)
+            {
+                photoUrl = await SaveProfilePhoto(dto.ProfilePhoto);
+            }
 
             var user = new User
             {
@@ -107,7 +110,10 @@ namespace ChatApp.Controllers
                 Email = dto.Email,
                 IsOnline = false,
                 LastSeen = DateTime.Now,
-                ProfilePhoto = photoUrl,
+
+                // ⭐ DEFAULT IMAGE FALLBACK
+                ProfilePhoto = photoUrl ?? "/uploads/profile/user.png",
+
                 PasswordHash = HashPassword(dto.Password)
             };
 
@@ -115,7 +121,6 @@ namespace ChatApp.Controllers
             await _context.SaveChangesAsync();
 
             var token = _jwtService.GenerateToken(user);
-
 
             return Ok(new
             {
@@ -127,8 +132,8 @@ namespace ChatApp.Controllers
                     user.Email
                 }
             });
-
         }
+
 
 
 
@@ -209,7 +214,7 @@ namespace ChatApp.Controllers
             var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
             user.ResetToken = token;
             user.ResetTokenExpiry = DateTime.UtcNow.AddMinutes(15);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();   
 
             var resetLink = $"{_config["ClientUrl"]}/reset-password-confirm?token={Uri.EscapeDataString(token)}";
 
