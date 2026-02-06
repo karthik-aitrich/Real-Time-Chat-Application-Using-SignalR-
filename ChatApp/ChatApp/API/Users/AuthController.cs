@@ -43,7 +43,7 @@ namespace ChatApp.Controllers
 		
            
 
-      
+       
             await _emailService.SendEmailAsync(dto.Email);
             //return Ok("Registration successful");
             return Ok();
