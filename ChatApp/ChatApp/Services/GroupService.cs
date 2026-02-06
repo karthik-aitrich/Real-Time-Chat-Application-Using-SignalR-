@@ -20,7 +20,7 @@ public class GroupService : IGroupService
 
     public async Task<List<ChatGroup>> GetUserGroupsAsync(Guid userId) 
     {
-        return await _repo.GetUserGroupsAsync(userId);
+        return await _repo.GetUserGroupsAsync(userId); 
     }
 
     public async Task<Guid> CreateGroupAsync(Guid creatorId, CreateGroupDto dto)
