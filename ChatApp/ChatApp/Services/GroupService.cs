@@ -18,7 +18,7 @@ public class GroupService : IGroupService
         await _repo.CreateGroupAsync(name, creatorId);
     }
 
-    public async Task<List<ChatGroup>> GetUserGroupsAsync(Guid userId)
+    public async Task<List<ChatGroup>> GetUserGroupsAsync(Guid userId) 
     {
         return await _repo.GetUserGroupsAsync(userId);
     }
