@@ -9,7 +9,7 @@ public class GroupService : IGroupService
     private readonly IGroupRepository _repo;
 
     public GroupService(IGroupRepository repo)
-    {
+    { 
         _repo = repo;
     }
 
