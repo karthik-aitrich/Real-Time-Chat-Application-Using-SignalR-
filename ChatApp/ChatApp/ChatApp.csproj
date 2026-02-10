@@ -12,6 +12,7 @@
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="14.0.0" />
 		<PackageReference Include="IntelliTect.AspNetCore.SignalR.SqlServer" Version="1.4.0" />
+		<PackageReference Include="MailKit" Version="4.14.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.9" />
 
@@ -21,8 +22,12 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="MimeKit" Version="4.14.0" />
 
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="wwwroot\uploads\profile\" />
 	</ItemGroup>
 
 

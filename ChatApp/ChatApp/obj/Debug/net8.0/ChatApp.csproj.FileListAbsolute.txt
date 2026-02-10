@@ -153,6 +153,7 @@ D:\REAL TIME CHAT\ChatApp\ChatApp\obj\Debug\net8.0\ChatApp.genruntimeconfig.cach
 D:\REAL TIME CHAT\ChatApp\ChatApp\obj\Debug\net8.0\ref\ChatApp.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\appsettings.Development.json
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\appsettings.json
+D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\ChatApp.staticwebassets.runtime.json
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\ChatApp.staticwebassets.endpoints.json
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\ChatApp.exe
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\ChatApp.deps.json
@@ -162,8 +163,10 @@ D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\AutoMapper.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Azure.Core.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Azure.Identity.dll
+D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Humanizer.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\IntelliTect.AspNetCore.SignalR.SqlServer.dll
+D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\MailKit.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\MessagePack.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\MessagePack.Annotations.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -196,6 +199,7 @@ D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\MimeKit.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -213,6 +217,7 @@ D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\System.Memory.Data.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\System.Runtime.Caching.dll
+D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
@@ -283,6 +288,7 @@ D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Domain.dll
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\bin\Debug\net8.0\Domain.pdb
 D:\REAL TIME CHAT\Real-Time-Chat-Application-Using-SignalR-\ChatApp\ChatApp\obj\Debug\net8.0\ChatApp.csproj.AssemblyReference.cache

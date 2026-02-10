@@ -17,6 +17,37 @@
   },
   {
     "ContainingType": "ChatApp.Controllers.AuthController",
+    "Method": "ConfirmAccount",
+    "RelativePath": "api/v1/Auth/confirm",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProfilePhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.AuthController",
     "Method": "ForgotPassword",
     "RelativePath": "api/v1/Auth/forgot-password",
     "HttpMethod": "POST",
@@ -90,6 +121,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ChatApp.Controllers.AuthController",
+    "Method": "VerifyOtp",
+    "RelativePath": "api/v1/Auth/verify-otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Otp",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ChatApp.Controllers.ChatController",
     "Method": "GetChatHistory",
     "RelativePath": "api/v1/Chat/history/{user1}/{user2}",
@@ -128,7 +180,7 @@
   },
   {
     "ContainingType": "GroupController",
-    "Method": "GetMembers",
+    "Method": "GetGroupMembers",
     "RelativePath": "api/v1/group/{groupId}/members",
     "HttpMethod": "GET",
     "IsController": true,
@@ -144,22 +196,6 @@
   },
   {
     "ContainingType": "GroupController",
-    "Method": "Get",
-    "RelativePath": "api/v1/group/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "GroupController",
     "Method": "AddMember",
     "RelativePath": "api/v1/group/add-member",
     "HttpMethod": "POST",
@@ -167,14 +203,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "groupId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "userId",
-        "Type": "System.Guid",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "Domain.DTOs.AddMemberDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -241,14 +272,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "groupId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "userId",
-        "Type": "System.Guid",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "Domain.DTOs.LeaveGroupDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -262,19 +288,25 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "groupId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
+        "Name": "dto",
+        "Type": "Domain.DTOs.RemoveMemberDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupController",
+    "Method": "GetUserGroups",
+    "RelativePath": "api/v1/group/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "userId",
         "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "adminId",
-        "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -325,6 +357,16 @@
     "ContainingType": "ChatApp.Controllers.UserController",
     "Method": "GetAllUsers",
     "RelativePath": "api/v1/User/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.UserController",
+    "Method": "GetMyProfile",
+    "RelativePath": "api/v1/User/users/me",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
