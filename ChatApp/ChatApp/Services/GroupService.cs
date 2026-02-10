@@ -32,7 +32,7 @@ public class GroupService : IGroupService
 
         if (members.Count < 3)
             throw new Exception("A group must have at least 3 members");
-
+         
         var groupId = await _repo.CreateGroupAsync(dto.Name, creatorId);
 
         foreach (var userId in members)

@@ -59,6 +59,28 @@ namespace ChatApp.Migrations
                     b.ToTable("Connections");
                 });
 
+            modelBuilder.Entity("Domain.Models.GroupMessageSeen", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("GroupMessageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("SeenAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupMessageId");
+
+                    b.ToTable("GroupMessageSeens");
+                });
+
             modelBuilder.Entity("Domain.Models.Message", b =>
                 {
                     b.Property<Guid>("MessageId")
@@ -128,6 +150,10 @@ namespace ChatApp.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProfilePhoto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ResetToken")
                         .HasColumnType("nvarchar(max)");
 
@@ -181,10 +207,6 @@ namespace ChatApp.Migrations
                     b.Property<Guid>("SenderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("SenderName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("SentAt")
                         .HasColumnType("datetime2");
 
@@ -208,6 +230,20 @@ namespace ChatApp.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("UserStatuses");
+                });
+
+            modelBuilder.Entity("Domain.Models.GroupMessageSeen", b =>
+                {
+                    b.HasOne("GroupMessage", null)
+                        .WithMany("SeenBy")
+                        .HasForeignKey("GroupMessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GroupMessage", b =>
+                {
+                    b.Navigation("SeenBy");
                 });
 #pragma warning restore 612, 618
         }
