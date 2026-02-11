@@ -13,6 +13,10 @@ namespace Domain.Services.Interfaces
         Task<List<User>> GetAllUsersAsync();
         Task SetUserOnlineAsync(Guid userId);
         Task SetUserOfflineAsync(Guid userId);
+        Task UpdateLastSeenAsync(Guid userId);
+
+        Task<List<Guid>> GetOnlineUserIdsAsync();
+
         Task<User> viewprofile(Guid userid);
 
         Task<UserProfileDto?> GetMyProfileAsync(Guid userId);

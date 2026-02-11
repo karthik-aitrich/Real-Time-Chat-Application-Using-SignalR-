@@ -127,52 +127,49 @@ namespace ChatApp.Hubs
         public override async Task OnConnectedAsync()
         {
             var userId = GetUserId();
+            if (userId == Guid.Empty) return;
 
-            if (userId != Guid.Empty)
-            {
-                UserConnectionManager.Add(userId, Context.ConnectionId);
-                // 🔥 STEP 2: send existing online users to the newly connected client
-                var onlineUsers = UserConnectionManager.GetOnlineUsers();
+            UserConnectionManager.Add(userId, Context.ConnectionId);
+            UserPresenceManager.Heartbeat(userId);
 
-                await Clients.Caller.SendAsync("OnlineUsers", onlineUsers);
+            await Clients.Caller.SendAsync(
+                "OnlineUsers",
+                UserPresenceManager.GetOnlineUsers()
+            );
 
-
-                await _userService.SetUserOnlineAsync(userId);
-
-                await Clients.All.SendAsync("UserStatusChanged", new
-                {
-                    UserId = userId,
-                    IsOnline = true
-                });
-            }
+            await Clients.Others.SendAsync("UserOnline", userId);
 
             await base.OnConnectedAsync();
         }
 
 
 
+
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             var userId = GetUserId();
+            if (userId == Guid.Empty) return;
 
-            if (userId != Guid.Empty)
+            UserConnectionManager.Remove(userId, Context.ConnectionId);
+
+            // Only remove presence if NO connections remain
+            if (!UserConnectionManager.IsOnline(userId))
             {
-                UserConnectionManager.Remove(userId, Context.ConnectionId);
-
-                // ✅ ONLY mark offline if NO connections remain
-                if (!UserConnectionManager.IsOnline(userId))
-                {
-                    await _userService.SetUserOfflineAsync(userId);
-
-                    await Clients.All.SendAsync("UserStatusChanged", new
-                    {
-                        UserId = userId,
-                        IsOnline = false
-                    });
-                }
+                UserPresenceManager.Remove(userId);
+                await Clients.All.SendAsync("UserOffline", userId);
             }
 
             await base.OnDisconnectedAsync(exception);
+        }
+
+
+
+        public async Task Ping()
+        {
+            var userId = GetUserId();
+            if (userId == Guid.Empty) return;
+
+            //await _userService.UpdateLastSeenAsync(userId);
         }
 
 

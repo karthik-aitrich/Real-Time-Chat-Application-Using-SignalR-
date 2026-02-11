@@ -14,6 +14,21 @@ namespace ChatApp.Services
         {
             _userRepo = userRepo;
         }
+        public async Task UpdateLastSeenAsync(Guid userId)
+        {
+            await _userRepo.UpdateLastSeenAsync(userId);
+        }
+
+
+        public async Task<List<Guid>> GetOnlineUserIdsAsync()
+        {
+            var cutoff = DateTime.UtcNow.AddSeconds(-30); // 30s window
+
+            var users = await _userRepo.GetUsersLastSeenAfterAsync(cutoff);
+
+            return users.Select(u => u.UserId).ToList();
+        }
+
 
         public async Task<UserBasicDto?> GetUserBasicAsync(Guid userId)
         {
