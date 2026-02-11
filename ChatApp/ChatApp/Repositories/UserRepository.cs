@@ -43,6 +43,25 @@ namespace ChatApp.Repositories
                 .FirstOrDefaultAsync();
         }
 
+        public async Task UpdateLastSeenAsync(Guid userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null) return;
+
+            user.LastSeen = DateTime.UtcNow;
+            user.IsOnline = true;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<User>> GetUsersLastSeenAfterAsync(DateTime time)
+        {
+            return await _context.Users
+                .Where(u => u.LastSeen >= time)
+                .Select(u => new User { UserId = u.UserId })
+                .ToListAsync();
+        }
+
 
         public async Task<UserProfileDto?> GetUserByIdAsync(Guid id)
         {

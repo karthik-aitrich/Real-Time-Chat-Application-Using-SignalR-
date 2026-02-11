@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { GroupService } from '../../../services/group.service';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { ChatService } from '../../../services/chat.service';
 import { GroupStateService } from '../../../services/GroupStateService ';
 
 @Component({
@@ -18,6 +19,8 @@ export class Sidebar implements OnInit, OnDestroy {
   users: any[] = [];
   groups: any[] = [];
   activeTab: 'chats' | 'groups' = 'chats';
+private statusSub?: Subscription;
+private onlineSub?: Subscription;
 
   showSettings = false;
 
@@ -27,13 +30,16 @@ export class Sidebar implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private groupService: GroupService,
     private router: Router,
-    private groupState: GroupStateService
+    private groupState: GroupStateService,
+    private chatService: ChatService
   ) {}
 
   // ===============================
   // INIT
   // ===============================
   ngOnInit(): void {
+    this.chatService.startConnection();
+
   console.log('Sidebar INIT');
 
   // 1️⃣ Load users from resolver
@@ -43,6 +49,21 @@ export class Sidebar implements OnInit, OnDestroy {
   this.users = resolvedUsers.filter(
     (u: any) => u.userId !== currentUserId
   );
+  this.onlineSub = this.chatService.onlineUsers$.subscribe((onlineIds: string[]) => {
+  this.users.forEach(user => {
+    user.isOnline = onlineIds.includes(user.userId);
+  });
+});
+
+this.statusSub = new Subscription();
+this.chatService.onUserStatusChanged((data: any) => {
+  const user = this.users.find(u => u.userId === data.UserId);
+  if (user) {
+    user.isOnline = data.IsOnline;
+  }
+});
+
+
 
   // 2️⃣ Initial groups load
   this.loadGroups();
@@ -128,6 +149,9 @@ export class Sidebar implements OnInit, OnDestroy {
   // CLEANUP
   // ===============================
   ngOnDestroy(): void {
-    this.routerSub?.unsubscribe();
-  }
+  this.routerSub?.unsubscribe();
+  this.statusSub?.unsubscribe();
+  this.onlineSub?.unsubscribe();
+}
+
 }

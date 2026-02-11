@@ -13,6 +13,8 @@ namespace Domain.Repositories.Interfaces
         Task<List<User>> GetAllUsersAsync();
         Task<UserProfileDto?> GetUserByIdAsync(Guid userId);
         Task UpdateUserStatusAsync(Guid userId, bool isOnline);
+        Task UpdateLastSeenAsync(Guid userId);
+        Task<List<User>> GetUsersLastSeenAfterAsync(DateTime time);
 
         Task SetUserOfflineAsync(Guid userId);
         Task<User> viewprofile(Guid userId);
