@@ -7,8 +7,14 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('token');
   const router = inject(Router);
 
-  // Attach token if exists
-  if (token) {
+  // ✅ Public endpoints (NO token)
+  const isPublicEndpoint =
+    req.url.includes('/auth/login') ||
+    req.url.includes('/forgot-password') ||
+    req.url.includes('/reset-password');
+
+  // ✅ Attach token ONLY if NOT public
+  if (token && !isPublicEndpoint) {
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`
@@ -19,17 +25,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error) => {
 
-      // 🔥 HANDLE 401 SMARTLY
-      if (error.status === 401) {
-
-        // ❌ DO NOT redirect when login API fails
-        if (!req.url.includes('/auth/login')) {
-          localStorage.removeItem('token');
-          router.navigate(['/login']);
-        }
+      // 🔥 Handle 401 properly
+      if (error.status === 401 && !isPublicEndpoint) {
+        localStorage.removeItem('token');
+        router.navigate(['/login']);
       }
 
-      // 🔥 VERY IMPORTANT: rethrow error
       return throwError(() => error);
     })
   );
